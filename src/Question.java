@@ -1,4 +1,5 @@
 public class Question extends javax.swing.JPanel {
+    public int points;
     public Question() {
         initComponents();
     }
@@ -6,12 +7,22 @@ public class Question extends javax.swing.JPanel {
     public void generateQuestion(int item_no) {
 
         // generate question for item in (item_no)
-        // 1 - 3 for easy
-        // 1 - 6 for med
-        // 1 - 9 for hard
+
+
+    }
+
+    public boolean validator(char selected, char correct){
+        points++;
+        if(selected == correct){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private void initComponents() {
+        points = 0;
         question_C_scroll1 = new javax.swing.JScrollPane();
         question_C_label1 = new javax.swing.JTextArea();
         question_A_scroll = new javax.swing.JScrollPane();
