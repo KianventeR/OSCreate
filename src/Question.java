@@ -3,6 +3,14 @@ public class Question extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void generateQuestion(int item_no) {
+
+        // generate question for item in (item_no)
+        // 1 - 3 for easy
+        // 1 - 6 for med
+        // 1 - 9 for hard
+    }
+
     private void initComponents() {
         question_C_scroll1 = new javax.swing.JScrollPane();
         question_C_label1 = new javax.swing.JTextArea();
@@ -247,7 +255,13 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_AActionPerformed(java.awt.event.ActionEvent evt) {
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "results");
+        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
+        return_disabler();
+    }
+
+    private void return_disabler() {
+        OSCreate.mainMenu.menu_return.setEnabled(false);
+        OSCreate.mainMenu.menu_return.setVisible(false);
     }
 
     private void question_BMouseEntered(java.awt.event.MouseEvent evt) {
@@ -306,4 +320,5 @@ public class Question extends javax.swing.JPanel {
     private javax.swing.JLabel question_timer_bg;
     private javax.swing.JLabel question_timer_bg_label;
     private javax.swing.JLabel question_timer_label;
+    
 }

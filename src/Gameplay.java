@@ -21,9 +21,11 @@ public class Gameplay extends javax.swing.JPanel {
     LinkedList <Integer> currentStack;
     private int finished_question_count;
     public int max_count;
+    public int component_index;
     
 
     private void initComponents() {
+        component_index = 0;
         finished_question_count = 0;
         max_count = 0;
         stack_for_protection = new LinkedList<>();
@@ -516,10 +518,14 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_1ActionPerformed(java.awt.event.ActionEvent evt) {
         stack_adder(1);
-        // OSCreate.mainMenu.menu_return.setEnabled(true);
-        // OSCreate.mainMenu.menu_return.setVisible(true);
+        return_enabler();
         
-        // MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+    }
+
+    private void return_enabler() {
+        OSCreate.mainMenu.menu_return.setEnabled(true);
+        OSCreate.mainMenu.menu_return.setVisible(true);
     }
 
     private void gameplay_2MouseEntered(java.awt.event.MouseEvent evt) {
@@ -533,6 +539,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_2ActionPerformed(java.awt.event.ActionEvent evt) {
         stack_adder(2);
+         return_enabler();
+
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_3MouseEntered(java.awt.event.MouseEvent evt) {
@@ -545,6 +554,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_3ActionPerformed(java.awt.event.ActionEvent evt) {
         stack_adder(3);
+        return_enabler();
+
+        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_4MouseEntered(java.awt.event.MouseEvent evt) {
@@ -557,6 +569,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_4ActionPerformed(java.awt.event.ActionEvent evt) {
          stack_adder(4);
+        return_enabler();
+
+        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_5MouseEntered(java.awt.event.MouseEvent evt) {
@@ -569,6 +584,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_5ActionPerformed(java.awt.event.ActionEvent evt) {
          stack_adder(5);
+         return_enabler();
+
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_6MouseEntered(java.awt.event.MouseEvent evt) {
@@ -581,6 +599,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_6ActionPerformed(java.awt.event.ActionEvent evt) {
          stack_adder(6);
+         return_enabler();
+
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_7MouseEntered(java.awt.event.MouseEvent evt) {
@@ -593,6 +614,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_7ActionPerformed(java.awt.event.ActionEvent evt) {
          stack_adder(7);
+         return_enabler();
+
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_8MouseEntered(java.awt.event.MouseEvent evt) {
@@ -605,6 +629,9 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_8ActionPerformed(java.awt.event.ActionEvent evt) {
          stack_adder(8);
+         return_enabler();
+
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_9MouseEntered(java.awt.event.MouseEvent evt) {
@@ -617,6 +644,10 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_9ActionPerformed(java.awt.event.ActionEvent evt) {
          stack_adder(9);
+         return_enabler();
+
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+         MainMenu.question.generateQuestion(9);
     }
 
     private void gameplay_kernelMouseEntered(java.awt.event.MouseEvent evt) {
@@ -655,28 +686,35 @@ public class Gameplay extends javax.swing.JPanel {
         
 
         if(selected.equals("kernel")){
-            
+            component_index = 0;
             currentStack = stack_for_kernel;
         }
         else if(selected.equals("process_management")){
+            component_index = 1;
             currentStack = stack_for_process;
         }
         else if(selected.equals("io_management")){
+            component_index = 2;
              currentStack = stack_for_io;
         }
         else if(selected.equals("file_management")){
+            component_index = 3;
              currentStack = stack_for_file;
         }
         else if(selected.equals("storage_management")){
+            component_index = 4;
              currentStack = stack_for_storage;
         }
         else if(selected.equals("memory_management")){
+            component_index = 5;
              currentStack = stack_for_memory;
         }
         else if(selected.equals("protection")){
+            component_index = 6;
              currentStack = stack_for_protection;
         }
         else if(selected.equals("interpreter")){
+            component_index = 7;
              currentStack = stack_for_interpreter;
         }
 
@@ -686,6 +724,44 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void disabler(LinkedList<Integer> selected_stack) {
+        
+        if(currentStack.size() == max_count / 8){
+            switch(component_index){
+
+                case 0: //kernel
+                gameplay_kernel.setEnabled(false);
+                break;
+
+                case 1: //process management
+                gameplay_process_mgt.setEnabled(false);
+                break;
+
+                case 2: //io
+                gameplay_io_mgt.setEnabled(false);
+                break;
+
+                case 3: //file 
+                gameplay_file.setEnabled(false);
+                break;
+
+                case 4: // storage
+                gameplay_storage.setEnabled(false);
+                break;
+
+                case 5: //memory
+                gameplay_memory.setEnabled(false);
+                break;
+                
+                case 6: //protecc
+                gameplay_protection.setEnabled(false);
+                break;
+
+                case 7: //interpreter
+                gameplay_interpreter.setEnabled(false);
+                break;
+
+            }
+        }
         System.out.println("The current stack in disabler is" + selected_stack + " " + selected);
         for(int i = 1; i <=9; i++){
             if(selected_stack.contains(i)){
