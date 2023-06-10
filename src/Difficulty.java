@@ -120,7 +120,8 @@ public class Difficulty extends javax.swing.JPanel {
 
     private void difficulty_easyActionPerformed(java.awt.event.ActionEvent evt) {
 
-        //questions are limited to 3, randomly selects questions from file
+        MainMenu.gameplay.max_count = 24;
+        System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
 
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
@@ -145,6 +146,10 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_mediumActionPerformed(java.awt.event.ActionEvent evt) {
+
+        MainMenu.gameplay.max_count = 48;
+        System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
+
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
@@ -168,6 +173,8 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_hardActionPerformed(java.awt.event.ActionEvent evt) {
+        MainMenu.gameplay.max_count = 72;
+        System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);

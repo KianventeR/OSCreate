@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 import javax.swing.JButton;
 
 public class Gameplay extends javax.swing.JPanel {
@@ -8,10 +10,34 @@ public class Gameplay extends javax.swing.JPanel {
     }
     JButton [] buttons;
     private String selected;
+    LinkedList <Integer> stack_for_kernel;
+    LinkedList <Integer> stack_for_process;
+    LinkedList <Integer> stack_for_io;
+    LinkedList <Integer> stack_for_file;
+    LinkedList <Integer> stack_for_storage;
+    LinkedList <Integer> stack_for_memory;
+    LinkedList <Integer> stack_for_protection;
+    LinkedList <Integer> stack_for_interpreter;
+    LinkedList <Integer> currentStack;
+    private int finished_question_count;
+    public int max_count;
+    
 
     private void initComponents() {
-       
+        finished_question_count = 0;
+        max_count = 0;
+        stack_for_protection = new LinkedList<>();
+        stack_for_interpreter = new LinkedList<>();
+        stack_for_kernel = new LinkedList<>();
+        stack_for_process = new LinkedList<>();
+        stack_for_io = new LinkedList<>();
+        stack_for_file = new LinkedList<>();
+        stack_for_storage = new LinkedList<>();
+        stack_for_memory = new LinkedList<>();
+        currentStack = new LinkedList<>();
+        
         selected = "";
+        selected_component = new javax.swing.JLabel();
         gameplay_1 = new javax.swing.JButton();
         gameplay_2 = new javax.swing.JButton();
         gameplay_3 = new javax.swing.JButton();
@@ -43,6 +69,9 @@ public class Gameplay extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1210, 580));
         setLayout(null);
 
+
+      
+        add(selected_component);
         gameplay_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/1.png"))); 
         gameplay_1.setBorder(null);
         gameplay_1.setBorderPainted(false);
@@ -469,6 +498,11 @@ public class Gameplay extends javax.swing.JPanel {
         add(gameplay_points_bg);
         gameplay_points_bg.setBounds(760, 70, 150, 130);
 
+        selected_component.setFont(new java.awt.Font("Segoe UI", 1, 20)); 
+        selected_component.setForeground(new java.awt.Color(255, 255, 255));
+        selected_component.setText("SELECT A COMPONENT");
+        selected_component.setBounds(710, 510, 300, 60);
+
         buttons = new JButton[]{gameplay_1, gameplay_2, gameplay_3, gameplay_4, gameplay_5, gameplay_6, gameplay_7, gameplay_8, gameplay_9};
     }
 
@@ -481,14 +515,16 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_1ActionPerformed(java.awt.event.ActionEvent evt) {
-        OSCreate.mainMenu.menu_return.setEnabled(true);
-        OSCreate.mainMenu.menu_return.setVisible(true);
+        stack_adder(1);
+        // OSCreate.mainMenu.menu_return.setEnabled(true);
+        // OSCreate.mainMenu.menu_return.setVisible(true);
         
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+        // MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_2MouseEntered(java.awt.event.MouseEvent evt) {
         gameplay_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/2_hover.png")));
+
     }
 
     private void gameplay_2MouseExited(java.awt.event.MouseEvent evt) {
@@ -496,7 +532,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_2ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        stack_adder(2);
     }
 
     private void gameplay_3MouseEntered(java.awt.event.MouseEvent evt) {
@@ -508,7 +544,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_3ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        stack_adder(3);
     }
 
     private void gameplay_4MouseEntered(java.awt.event.MouseEvent evt) {
@@ -520,7 +556,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_4ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+         stack_adder(4);
     }
 
     private void gameplay_5MouseEntered(java.awt.event.MouseEvent evt) {
@@ -532,7 +568,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_5ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+         stack_adder(5);
     }
 
     private void gameplay_6MouseEntered(java.awt.event.MouseEvent evt) {
@@ -544,7 +580,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_6ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+         stack_adder(6);
     }
 
     private void gameplay_7MouseEntered(java.awt.event.MouseEvent evt) {
@@ -556,7 +592,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_7ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+         stack_adder(7);
     }
 
     private void gameplay_8MouseEntered(java.awt.event.MouseEvent evt) {
@@ -568,7 +604,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_8ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+         stack_adder(8);
     }
 
     private void gameplay_9MouseEntered(java.awt.event.MouseEvent evt) {
@@ -580,7 +616,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_9ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+         stack_adder(9);
     }
 
     private void gameplay_kernelMouseEntered(java.awt.event.MouseEvent evt) {
@@ -597,6 +633,7 @@ public class Gameplay extends javax.swing.JPanel {
             enable_all_buttons(buttons);
         }
         isSelected("kernel");
+        // System.out.println(currentStack);
 
     }
 
@@ -608,10 +645,64 @@ public class Gameplay extends javax.swing.JPanel {
         }
     }
 
-    private void isSelected(String selected) {
+  
 
+    private void isSelected(String selected) {
+        
         this.selected = selected;
+        selected_component.setText(selected.replace("_", " ").toUpperCase());
         System.out.println(this.selected);
+        
+
+        if(selected.equals("kernel")){
+            
+            currentStack = stack_for_kernel;
+        }
+        else if(selected.equals("process_management")){
+            currentStack = stack_for_process;
+        }
+        else if(selected.equals("io_management")){
+             currentStack = stack_for_io;
+        }
+        else if(selected.equals("file_management")){
+             currentStack = stack_for_file;
+        }
+        else if(selected.equals("storage_management")){
+             currentStack = stack_for_storage;
+        }
+        else if(selected.equals("memory_management")){
+             currentStack = stack_for_memory;
+        }
+        else if(selected.equals("protection")){
+             currentStack = stack_for_protection;
+        }
+        else if(selected.equals("interpreter")){
+             currentStack = stack_for_interpreter;
+        }
+
+        disabler(currentStack);
+      
+        
+    }
+
+    private void disabler(LinkedList<Integer> selected_stack) {
+        System.out.println("The current stack in disabler is" + selected_stack + " " + selected);
+        for(int i = 1; i <=9; i++){
+            if(selected_stack.contains(i)){
+                buttons[i - 1].setEnabled(false);
+            }
+            else{
+                buttons[i - 1].setEnabled(true);
+            }
+        }
+            
+    }
+
+    private void stack_adder(int num){
+        finished_question_count++;
+        currentStack.add(num);
+        System.out.println(currentStack);
+        disabler(currentStack);
     }
 
 
@@ -728,13 +819,13 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_interpreterActionPerformed(java.awt.event.ActionEvent evt) {
+
          if(selected.equals("")){
             enable_all_buttons(buttons);
         }
         isSelected("interpreter");
         
-        
-        
+
     }
 
     public javax.swing.JButton gameplay_1;
@@ -762,6 +853,7 @@ public class Gameplay extends javax.swing.JPanel {
     public javax.swing.JLabel gameplay_questions_border;
     private javax.swing.JLabel gameplay_questions_label;
     private javax.swing.JButton gameplay_storage;
+    public javax.swing.JLabel selected_component;
 
     public void reset() {
         removeAll();
