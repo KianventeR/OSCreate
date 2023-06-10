@@ -13,7 +13,7 @@ public class OSCreate extends javax.swing.JFrame {
     
     public OSCreate() {
         mainFrame.setSize(1280, 720);
-        mainFrame.setTitle("DiskSim");
+        mainFrame.setTitle("OSCreate - FMS Studios");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setUndecorated(true);
         

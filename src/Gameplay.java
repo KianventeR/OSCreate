@@ -1,11 +1,17 @@
+import javax.swing.JButton;
+
 public class Gameplay extends javax.swing.JPanel {
     public String difficulty_level;
     
     public Gameplay() {
         initComponents();
     }
+    JButton [] buttons;
+    private String selected;
 
     private void initComponents() {
+       
+        selected = "";
         gameplay_1 = new javax.swing.JButton();
         gameplay_2 = new javax.swing.JButton();
         gameplay_3 = new javax.swing.JButton();
@@ -462,6 +468,8 @@ public class Gameplay extends javax.swing.JPanel {
         gameplay_points_bg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(gameplay_points_bg);
         gameplay_points_bg.setBounds(760, 70, 150, 130);
+
+        buttons = new JButton[]{gameplay_1, gameplay_2, gameplay_3, gameplay_4, gameplay_5, gameplay_6, gameplay_7, gameplay_8, gameplay_9};
     }
 
     private void gameplay_1MouseEntered(java.awt.event.MouseEvent evt) {
@@ -584,8 +592,29 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_kernelActionPerformed(java.awt.event.ActionEvent evt) {
-        gameplay_1.setEnabled(true);
+        
+        if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("kernel");
+
     }
+
+    
+
+    private void enable_all_buttons(JButton[] buttons) {
+         for(int i = 0; i < buttons.length; i++){
+            buttons[i].setEnabled(true);
+        }
+    }
+
+    private void isSelected(String selected) {
+
+        this.selected = selected;
+        System.out.println(this.selected);
+    }
+
+
 
     private void gameplay_process_mgtMouseEntered(java.awt.event.MouseEvent evt) {
         gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process_hover.png")));
@@ -596,6 +625,12 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_process_mgtActionPerformed(java.awt.event.ActionEvent evt) {
+          
+        if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("process_management");
+        
         
     }
 
@@ -608,6 +643,12 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_io_mgtActionPerformed(java.awt.event.ActionEvent evt) {
+
+         if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("io_management");
+        
         
     }
 
@@ -620,6 +661,10 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_protectionActionPerformed(java.awt.event.ActionEvent evt) {
+         if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("protection");
         
     }
 
@@ -632,6 +677,11 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_fileActionPerformed(java.awt.event.ActionEvent evt) {
+         if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("file_management");
+        
         
     }
 
@@ -645,6 +695,11 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_storageActionPerformed(java.awt.event.ActionEvent evt) {
         
+         if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("storage_management");
+        
     }
 
     private void gameplay_memoryMouseEntered(java.awt.event.MouseEvent evt) {
@@ -656,6 +711,11 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_memoryActionPerformed(java.awt.event.ActionEvent evt) {
+         if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("memory_management");
+        
         
     }
 
@@ -668,6 +728,12 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_interpreterActionPerformed(java.awt.event.ActionEvent evt) {
+         if(selected.equals("")){
+            enable_all_buttons(buttons);
+        }
+        isSelected("interpreter");
+        
+        
         
     }
 
@@ -696,4 +762,9 @@ public class Gameplay extends javax.swing.JPanel {
     public javax.swing.JLabel gameplay_questions_border;
     private javax.swing.JLabel gameplay_questions_label;
     private javax.swing.JButton gameplay_storage;
+
+    public void reset() {
+        removeAll();
+        initComponents();
+    }
 }

@@ -616,6 +616,8 @@ public class MainMenu extends javax.swing.JPanel {
         help = false;
         devs = false;
         lead = false;
+
+        gameplay.reset();
         
         menu_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/home_hover.png")));
         menu_play.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/play.png")));

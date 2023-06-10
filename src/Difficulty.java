@@ -119,6 +119,9 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_easyActionPerformed(java.awt.event.ActionEvent evt) {
+
+        //questions are limited to 3, randomly selects questions from file
+
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
