@@ -86,7 +86,7 @@ public class Results extends javax.swing.JPanel {
         results_status.setFont(new java.awt.Font("Segoe UI", 1, 80)); 
         results_status.setForeground(new java.awt.Color(255, 255, 255));
         results_status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        results_status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/results/status_00.png"))); 
+        results_status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/results/status_08.png"))); 
         add(results_status);
         results_status.setBounds(380, 60, 480, 160);
 

@@ -255,8 +255,22 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_AActionPerformed(java.awt.event.ActionEvent evt) {
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
+        whereTO();
         return_disabler();
+    }
+
+    private void whereTO() {
+        int finished = MainMenu.gameplay.finished_question_count;
+        int max = MainMenu.gameplay.max_count;
+
+        if(finished == max){
+         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "results");
+        }
+        else{
+            MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
+        }
+         
+         
     }
 
     private void return_disabler() {

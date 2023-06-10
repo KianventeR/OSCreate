@@ -19,12 +19,14 @@ public class Gameplay extends javax.swing.JPanel {
     LinkedList <Integer> stack_for_protection;
     LinkedList <Integer> stack_for_interpreter;
     LinkedList <Integer> currentStack;
-    private int finished_question_count;
+    public int finished_question_count;
     public int max_count;
     public int component_index;
+    private int disabled_components;
     
 
     private void initComponents() {
+        disabled_components = 0;
         component_index = 0;
         finished_question_count = 0;
         max_count = 0;
@@ -724,43 +726,56 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void disabler(LinkedList<Integer> selected_stack) {
+
+       
         
         if(currentStack.size() == max_count / 8){
             switch(component_index){
 
                 case 0: //kernel
                 gameplay_kernel.setEnabled(false);
+                // disabled_components++;
                 break;
 
                 case 1: //process management
                 gameplay_process_mgt.setEnabled(false);
+                // disabled_components++;
                 break;
 
                 case 2: //io
                 gameplay_io_mgt.setEnabled(false);
+                // disabled_components++;
                 break;
 
                 case 3: //file 
                 gameplay_file.setEnabled(false);
+                // disabled_components++;
                 break;
 
                 case 4: // storage
                 gameplay_storage.setEnabled(false);
+                // disabled_components++;
                 break;
 
                 case 5: //memory
                 gameplay_memory.setEnabled(false);
+                // disabled_components++;
                 break;
                 
                 case 6: //protecc
                 gameplay_protection.setEnabled(false);
+                // disabled_components++;
                 break;
 
                 case 7: //interpreter
                 gameplay_interpreter.setEnabled(false);
+                // disabled_components++;
                 break;
-
             }
+            disabled_components++;
+            change_integrity(disabled_components);
+            
+            
         }
         System.out.println("The current stack in disabler is" + selected_stack + " " + selected);
         for(int i = 1; i <=9; i++){
@@ -774,8 +789,16 @@ public class Gameplay extends javax.swing.JPanel {
             
     }
 
+    private void change_integrity(int disabled_components) {
+
+        for(int i = 1; i < disabled_components + 1; i++){
+            gameplay_integrity_status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/results/status_0"+i+".png"))); 
+        }
+    }
+
     private void stack_adder(int num){
         finished_question_count++;
+        System.out.println("Finished Questions: " + finished_question_count);
         currentStack.add(num);
         System.out.println(currentStack);
         disabler(currentStack);
