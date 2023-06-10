@@ -12,6 +12,8 @@ public class Question extends javax.swing.JPanel {
     }
 
     public boolean validator(char selected, char correct){
+
+        // validate correct answer
         points++;
         if(selected == correct){
             return true;
