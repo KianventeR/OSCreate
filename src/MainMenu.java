@@ -672,7 +672,7 @@ public class MainMenu extends javax.swing.JPanel {
         menu_return.setEnabled(false);
         menu_return.setVisible(false);
         
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
+        question.whereTO();
     }
 
 

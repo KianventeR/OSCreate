@@ -566,7 +566,6 @@ public class Gameplay extends javax.swing.JPanel {
     private void gameplay_1ActionPerformed(java.awt.event.ActionEvent evt) {
         stack_adder(1);
         return_enabler();
-
     }
 
     private int randomizer() {
@@ -589,12 +588,13 @@ public class Gameplay extends javax.swing.JPanel {
         };
        
 
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+        
         OSCreate.mainMenu.menu_return.setEnabled(true);
         OSCreate.mainMenu.menu_return.setVisible(true);
 
         set = question_directory.test(num, current_dir);
         MainMenu.question.writeQuestion(set);
+        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_2MouseEntered(java.awt.event.MouseEvent evt) {
@@ -610,7 +610,7 @@ public class Gameplay extends javax.swing.JPanel {
         stack_adder(2);
          return_enabler();
 
-         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+         
     }
 
     private void gameplay_3MouseEntered(java.awt.event.MouseEvent evt) {
@@ -625,7 +625,6 @@ public class Gameplay extends javax.swing.JPanel {
         stack_adder(3);
         return_enabler();
 
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_4MouseEntered(java.awt.event.MouseEvent evt) {
@@ -640,7 +639,6 @@ public class Gameplay extends javax.swing.JPanel {
          stack_adder(4);
         return_enabler();
 
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_5MouseEntered(java.awt.event.MouseEvent evt) {
@@ -655,7 +653,6 @@ public class Gameplay extends javax.swing.JPanel {
          stack_adder(5);
          return_enabler();
 
-         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_6MouseEntered(java.awt.event.MouseEvent evt) {
@@ -670,7 +667,6 @@ public class Gameplay extends javax.swing.JPanel {
          stack_adder(6);
          return_enabler();
 
-         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_7MouseEntered(java.awt.event.MouseEvent evt) {
@@ -685,7 +681,6 @@ public class Gameplay extends javax.swing.JPanel {
          stack_adder(7);
          return_enabler();
 
-         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_8MouseEntered(java.awt.event.MouseEvent evt) {
@@ -700,7 +695,6 @@ public class Gameplay extends javax.swing.JPanel {
          stack_adder(8);
          return_enabler();
 
-         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
     private void gameplay_9MouseEntered(java.awt.event.MouseEvent evt) {
@@ -715,8 +709,6 @@ public class Gameplay extends javax.swing.JPanel {
          stack_adder(9);
          return_enabler();
 
-         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
-         MainMenu.question.generateQuestion(9);
     }
 
     private void gameplay_kernelMouseEntered(java.awt.event.MouseEvent evt) {

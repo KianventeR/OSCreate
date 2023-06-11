@@ -7,12 +7,7 @@ public class Question extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void generateQuestion(int item_no) {
-
-        // generate question for item in (item_no)
-
-
-    }
+  
 
     public boolean validator(char selected, char correct){
 
@@ -27,6 +22,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void initComponents() {
+        correct = 'A';
         set = new LinkedList<>();
         points = 0;
         question_C_scroll1 = new javax.swing.JScrollPane();
@@ -278,11 +274,14 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_AActionPerformed(java.awt.event.ActionEvent evt) {
-        whereTO();
         return_disabler();
+        char selected = 'A';
+        System.out.println(validator(selected, correct));
+        
+        
     }
 
-    private void whereTO() {
+    public void whereTO() {
         int finished = MainMenu.gameplay.finished_question_count;
         int max = MainMenu.gameplay.max_count;
 
@@ -297,6 +296,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void return_disabler() {
+        whereTO();
         OSCreate.mainMenu.menu_return.setEnabled(false);
         OSCreate.mainMenu.menu_return.setVisible(false);
     }
@@ -311,6 +311,9 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_BActionPerformed(java.awt.event.ActionEvent evt) {
+        return_disabler();
+        char selected = 'B';
+        System.out.println(validator(selected, correct));
         
     }
 
@@ -323,6 +326,9 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_CActionPerformed(java.awt.event.ActionEvent evt) {
+        return_disabler();
+        char selected = 'C';
+        System.out.println(validator(selected, correct));
         
     }
 
@@ -335,6 +341,9 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_DActionPerformed(java.awt.event.ActionEvent evt) {
+        return_disabler();
+        char selected = 'D';
+        System.out.println(validator(selected, correct));
         
     }
 
@@ -359,6 +368,7 @@ public class Question extends javax.swing.JPanel {
     private javax.swing.JLabel question_timer_bg_label;
     private javax.swing.JLabel question_timer_label;
     private LinkedList<String> set;
+    private char correct;
     public void writeQuestion(LinkedList<String> set) {
         System.out.println(set);
         question_A_label.setText(set.get(3));
@@ -368,6 +378,9 @@ public class Question extends javax.swing.JPanel {
         question_C_label1.setText(set.get(2));
 
         this.set = set;
+        String correct_answer = set.get(7);
+        correct = correct_answer.charAt(0);
+        System.out.println(correct);
 
        
     }
