@@ -16,7 +16,7 @@ public class QuestionDirectory {
 
     public void initiateWB() {
         try {
-            wb = new XSSFWorkbook(getClass().getClassLoader().getResourceAsStream("questions.xlsx"));
+            wb = new XSSFWorkbook(getClass().getClassLoader().getResourceAsStream("Kernel.xlsx"));
             sheet = wb.getSheetAt(0);
         } catch (IOException e) {
         }
@@ -27,6 +27,13 @@ public class QuestionDirectory {
         CellReference cellReferenceQues = new CellReference("E" + generated.get(2).toString()); 
         Row rowQues = sheet.getRow(cellReferenceQues.getRow());
         Cell cellQues = rowQues.getCell(cellReferenceQues.getCol());
+    }
+
+
+    public static void main(String[] args) {
+        QuestionDirectory question = new QuestionDirectory();
+        question.initiateWB();
+        question.test();
     }
 
 }
