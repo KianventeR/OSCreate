@@ -571,7 +571,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private int randomizer() {
         Random rand = new Random();
-        return rand.nextInt((16 - 2 + 1) + 2);
+        return rand.nextInt((16 - 2) + 1);
         
     }
 

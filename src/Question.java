@@ -27,6 +27,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void initComponents() {
+        set = new LinkedList<>();
         points = 0;
         question_C_scroll1 = new javax.swing.JScrollPane();
         question_C_label1 = new javax.swing.JTextArea();
@@ -268,6 +269,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_AMouseEntered(java.awt.event.MouseEvent evt) {
+          System.out.println("EnteredA");
         
     }
 
@@ -300,6 +302,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_BMouseEntered(java.awt.event.MouseEvent evt) {
+        System.out.println("EnteredB");
         
     }
 
@@ -312,7 +315,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_CMouseEntered(java.awt.event.MouseEvent evt) {
-        
+          System.out.println("EnteredC");
     }
 
     private void question_CMouseExited(java.awt.event.MouseEvent evt) {
@@ -324,7 +327,7 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_DMouseEntered(java.awt.event.MouseEvent evt) {
-        
+          System.out.println("EnteredD");
     }
 
     private void question_DMouseExited(java.awt.event.MouseEvent evt) {
@@ -355,6 +358,7 @@ public class Question extends javax.swing.JPanel {
     private javax.swing.JLabel question_timer_bg;
     private javax.swing.JLabel question_timer_bg_label;
     private javax.swing.JLabel question_timer_label;
+    private LinkedList<String> set;
     public void writeQuestion(LinkedList<String> set) {
         System.out.println(set);
         question_A_label.setText(set.get(3));
@@ -362,6 +366,8 @@ public class Question extends javax.swing.JPanel {
         question_C_label.setText(set.get(5));
         question_D_label.setText(set.get(6));;
         question_C_label1.setText(set.get(2));
+
+        this.set = set;
 
        
     }
