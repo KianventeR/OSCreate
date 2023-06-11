@@ -15,7 +15,7 @@ public class OSCreate extends javax.swing.JFrame {
         mainFrame.setSize(1280, 720);
         mainFrame.setTitle("OSCreate - FMS Studios");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setUndecorated(false);
+        mainFrame.setUndecorated(true);
         
         mainPanel.setLayout(card);
         mainPanel.add(splashScreen, "1");
