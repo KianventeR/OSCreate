@@ -110,6 +110,10 @@ public class Difficulty extends javax.swing.JPanel {
         difficulty_label.setBounds(280, 50, 660, 80);
     }
 
+    public void disable_play(){
+        MainMenu.menu_play.setVisible(false);
+    }
+
     private void difficulty_easyMouseEntered(java.awt.event.MouseEvent evt) {
         difficulty_easy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/difficulty/easy_hover.png")));
     }
@@ -119,6 +123,10 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_easyActionPerformed(java.awt.event.ActionEvent evt) {
+        disable_play();
+        MainMenu.gameplay.max_count = 24;
+        System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
+
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
@@ -142,6 +150,11 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_mediumActionPerformed(java.awt.event.ActionEvent evt) {
+        disable_play();
+
+        MainMenu.gameplay.max_count = 48;
+        System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
+
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
@@ -165,6 +178,9 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_hardActionPerformed(java.awt.event.ActionEvent evt) {
+        disable_play();
+        MainMenu.gameplay.max_count = 72;
+        System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
