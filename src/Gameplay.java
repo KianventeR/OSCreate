@@ -570,7 +570,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private int randomizer() {
         Random rand = new Random();
-        return rand.nextInt((16 - 2) + 1);
+        return rand.nextInt((15 - 2) + 2);
         
     }
 
@@ -579,7 +579,8 @@ public class Gameplay extends javax.swing.JPanel {
          int num = randomizer();
 
         while(true){
-            if(current_items.isEmpty() || !current_items.contains(num) && num > 1){
+
+            if((current_items.isEmpty() || !current_items.contains(num)) && num > 2){
                 current_items.add(num);
                 break;
             }else{
@@ -1023,7 +1024,7 @@ public class Gameplay extends javax.swing.JPanel {
     private javax.swing.JButton gameplay_kernel;
     private javax.swing.JButton gameplay_memory;
     private javax.swing.JLabel gameplay_points_bg;
-    private javax.swing.JLabel gameplay_points_label;
+    public javax.swing.JLabel gameplay_points_label;
     private javax.swing.JButton gameplay_process_mgt;
     private javax.swing.JButton gameplay_protection;
     public javax.swing.JLabel gameplay_questions_border;

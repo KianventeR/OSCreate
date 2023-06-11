@@ -12,8 +12,10 @@ public class Question extends javax.swing.JPanel {
     public boolean validator(char selected, char correct){
 
         // validate correct answer
-        points++;
         if(selected == correct){
+            points = points + 10;
+            MainMenu.gameplay.gameplay_points_label.setText(String.valueOf(points));
+            OSCreate.mainMenu.results.results_score_label.setText(String.valueOf(points));
             return true;
         }
         else{

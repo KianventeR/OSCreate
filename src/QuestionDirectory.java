@@ -31,7 +31,7 @@ public class QuestionDirectory {
         LinkedList <String> question_set = new LinkedList<>();
         char [] cols = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
                     // A. Item, B. Topic, C. Question, D. (A), E. (B), F.(C), G. (D), H. Correct Answer
-        Random rand = new Random();
+        // Random rand = new Random();
         int num = item;
         
         for(int i = 1; i < 8 + 1; i++){

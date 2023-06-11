@@ -319,7 +319,7 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
         add(menu_return);
-        menu_return.setBounds(530, 630, 70, 60);
+        menu_return.setBounds(menu_play.getBounds());
 
         menu_help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/help.png"))); 
         menu_help.setBorder(null);
@@ -618,6 +618,7 @@ public class MainMenu extends javax.swing.JPanel {
         lead = false;
 
         gameplay.reset();
+        menu_play.setVisible(true);
         
         menu_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/home_hover.png")));
         menu_play.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/play.png")));
@@ -699,8 +700,8 @@ public class MainMenu extends javax.swing.JPanel {
     private javax.swing.JPanel menu_panel;
     private javax.swing.JLabel menu_panel_label;
     private javax.swing.JLabel menu_panel_logo;
-    private javax.swing.JButton menu_play;
-    private javax.swing.JButton menu_play_button;
+    public static javax.swing.JButton menu_play;
+    public static javax.swing.JButton menu_play_button;
     public javax.swing.JButton menu_return;
     private javax.swing.JLabel menu_taskbar_bg;
     private javax.swing.JLabel menu_time;

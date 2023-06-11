@@ -147,6 +147,7 @@ public class Results extends javax.swing.JPanel {
         OSCreate.mainMenu.menu_help.setVisible(true);
         OSCreate.mainMenu.menu_devs.setVisible(true);
         OSCreate.mainMenu.menu_leaderboards.setVisible(true);
+        MainMenu.question.points = 0;
         
         MainMenu.gameplay.reset();
         reset();
