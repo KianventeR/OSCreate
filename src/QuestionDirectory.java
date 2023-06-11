@@ -12,7 +12,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class QuestionDirectory {
     XSSFWorkbook wb;
     XSSFSheet sheet;
-    List<Integer> generated;
+    public static QuestionDirectory question;
+
+    String Ques;
 
     public void initiateWB() {
         try {
@@ -22,18 +24,20 @@ public class QuestionDirectory {
         }
     }
 
-    public void test() {
-        generated = new LinkedList<>();
-        CellReference cellReferenceQues = new CellReference("E" + generated.get(2).toString()); 
+    public String test() {
+        CellReference cellReferenceQues = new CellReference("E2");
         Row rowQues = sheet.getRow(cellReferenceQues.getRow());
         Cell cellQues = rowQues.getCell(cellReferenceQues.getCol());
+        Ques = cellQues.toString(); 
+
+        return Ques;
     }
 
 
     public static void main(String[] args) {
-        QuestionDirectory question = new QuestionDirectory();
+        question = new QuestionDirectory();
         question.initiateWB();
-        question.test();
+        System.out.println(question.test());
     }
 
 }
