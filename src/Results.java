@@ -19,7 +19,7 @@ public class Results extends javax.swing.JPanel {
         results_logo = new javax.swing.JLabel();
         results_sentence = new javax.swing.JTextPane();
         results_OS_complete = new javax.swing.JTextPane();
-
+        //test
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1210, 580));
         setLayout(null);
