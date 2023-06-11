@@ -545,11 +545,12 @@ public class Gameplay extends javax.swing.JPanel {
         return_enabler();
 
         set = question_directory.test(2, current_dir);
-        System.out.println(set);
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
+        MainMenu.question.writeQuestion(set);
+
     }
 
     private void return_enabler() {
+        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
         OSCreate.mainMenu.menu_return.setEnabled(true);
         OSCreate.mainMenu.menu_return.setVisible(true);
     }

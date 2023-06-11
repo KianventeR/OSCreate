@@ -14,7 +14,7 @@ public class MainMenu extends javax.swing.JPanel {
     public static Difficulty difficulty = new Difficulty();
     public static Gameplay gameplay = new Gameplay();
     public static Question question = new Question();
-    public static Results results = new Results();
+    public Results results = new Results();
     
     public MainMenu() {
         initComponents();

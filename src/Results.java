@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Results extends javax.swing.JPanel {
     public Results() {
         initComponents();
@@ -163,5 +165,6 @@ public class Results extends javax.swing.JPanel {
     public javax.swing.JTextPane results_sentence;
     public javax.swing.JTextArea results_specs;
     public javax.swing.JLabel results_status;
+   
     
 }

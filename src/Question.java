@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.util.LinkedList;
+
 public class Question extends javax.swing.JPanel {
     public int points;
     public Question() {
@@ -77,11 +80,13 @@ public class Question extends javax.swing.JPanel {
         question_A_label.setLineWrap(true);
         question_A_label.setRows(1);
         question_A_label.setWrapStyleWord(true);
-        question_A_label.setOpaque(false);
+        question_A_label.setOpaque(true);
+        question_A_label.setBackground(Color.WHITE);
         question_A_scroll.setViewportView(question_A_label);
-
+       
         add(question_A_scroll);
         question_A_scroll.setBounds(150, 290, 330, 80);
+        question_A_scroll.setOpaque(false);
 
         question_A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice.png"))); 
         question_A.setBorder(null);
@@ -114,7 +119,8 @@ public class Question extends javax.swing.JPanel {
         question_B_label.setRows(1);
         question_B_label.setText("aaasdasdsa sada sdsds dsad sd sadsa dsad asd sadsadsads a\na\na\na");
         question_B_label.setWrapStyleWord(true);
-        question_B_label.setOpaque(false);
+        question_B_label.setOpaque(true);
+        question_B_label.setBackground(Color.WHITE);
         question_B_scroll.setViewportView(question_B_label);
 
         add(question_B_scroll);
@@ -151,7 +157,8 @@ public class Question extends javax.swing.JPanel {
         question_C_label.setRows(1);
         question_C_label.setText("aaasdasdsa sada sdsds dsad sd sadsa dsad asd sadsadsads a\na\na\na");
         question_C_label.setWrapStyleWord(true);
-        question_C_label.setOpaque(false);
+        question_C_label.setOpaque(true);
+        question_C_label.setBackground(Color.WHITE);
         question_C_scroll.setViewportView(question_C_label);
 
         add(question_C_scroll);
@@ -188,7 +195,8 @@ public class Question extends javax.swing.JPanel {
         question_D_label.setRows(1);
         question_D_label.setText("aaasdasdsa sada sdsds dsad sd sadsa dsad asd sadsadsads a\na\na\na");
         question_D_label.setWrapStyleWord(true);
-        question_D_label.setOpaque(false);
+        question_D_label.setOpaque(true);
+        question_D_label.setBackground(Color.WHITE);
         question_D_scroll.setViewportView(question_D_label);
 
         add(question_D_scroll);
@@ -347,5 +355,16 @@ public class Question extends javax.swing.JPanel {
     private javax.swing.JLabel question_timer_bg;
     private javax.swing.JLabel question_timer_bg_label;
     private javax.swing.JLabel question_timer_label;
+    public void writeQuestion(LinkedList<String> set) {
+        System.out.println(set);
+        question_A_label.setText(set.get(3));
+        question_B_label.setText(set.get(4));
+        question_C_label.setText(set.get(5));
+        question_D_label.setText(set.get(6));;
+        question_C_label1.setText(set.get(2));
+
+       
+    }
+    
     
 }
