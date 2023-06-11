@@ -148,11 +148,20 @@ public class Results extends javax.swing.JPanel {
         OSCreate.mainMenu.menu_devs.setVisible(true);
         OSCreate.mainMenu.menu_leaderboards.setVisible(true);
         
+        MainMenu.gameplay.reset();
+        reset();
         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "main");
     }
 
 
     
+    private void reset() {
+        removeAll();
+        initComponents();
+    }
+
+
+
     public javax.swing.JTextPane results_OS_complete;
     public javax.swing.JLabel results_OS_name;
     public javax.swing.JTextField results_OSname;

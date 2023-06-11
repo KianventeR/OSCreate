@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.swing.JButton;
 
@@ -20,6 +21,16 @@ public class Gameplay extends javax.swing.JPanel {
     LinkedList <Integer> stack_for_memory;
     LinkedList <Integer> stack_for_protection;
     LinkedList <Integer> stack_for_interpreter;
+
+    LinkedList <Integer> kernel_items;
+    LinkedList <Integer> process_items;
+    LinkedList <Integer> io_items;
+    LinkedList <Integer> file_items;
+    LinkedList <Integer> storage_items;
+    LinkedList <Integer> memory_items;
+    LinkedList <Integer> protection_items;
+    LinkedList <Integer> interpreter_items;
+
     LinkedList <Integer> currentStack;
     public int finished_question_count;
     public int max_count;
@@ -36,6 +47,7 @@ public class Gameplay extends javax.swing.JPanel {
     private XSSFSheet interpreter;
     private XSSFSheet memory_management;
     private XSSFSheet protection;
+    LinkedList <Integer> current_items;
     
 
     private void initComponents() {
@@ -61,6 +73,17 @@ public class Gameplay extends javax.swing.JPanel {
         stack_for_storage = new LinkedList<>();
         stack_for_memory = new LinkedList<>();
         currentStack = new LinkedList<>();
+
+
+        protection_items = new LinkedList<>();
+        interpreter_items = new LinkedList<>();
+        kernel_items = new LinkedList<>();
+        process_items = new LinkedList<>();
+        io_items = new LinkedList<>();
+        file_items = new LinkedList<>();
+        storage_items = new LinkedList<>();
+        memory_items = new LinkedList<>();
+        current_items = new LinkedList<>();
         
         selected = "";
         selected_component = new javax.swing.JLabel();
@@ -544,15 +567,34 @@ public class Gameplay extends javax.swing.JPanel {
         stack_adder(1);
         return_enabler();
 
-        set = question_directory.test(2, current_dir);
-        MainMenu.question.writeQuestion(set);
+    }
 
+    private int randomizer() {
+        Random rand = new Random();
+        return rand.nextInt((16 - 2 + 1) + 2);
+        
     }
 
     private void return_enabler() {
+
+         int num = randomizer();
+
+        while(true){
+            if(current_items.isEmpty() || !current_items.contains(num) && num > 1){
+                current_items.add(num);
+                break;
+            }else{
+                num = randomizer();
+            }
+        };
+       
+
         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
         OSCreate.mainMenu.menu_return.setEnabled(true);
         OSCreate.mainMenu.menu_return.setVisible(true);
+
+        set = question_directory.test(num, current_dir);
+        MainMenu.question.writeQuestion(set);
     }
 
     private void gameplay_2MouseEntered(java.awt.event.MouseEvent evt) {
@@ -718,41 +760,49 @@ public class Gameplay extends javax.swing.JPanel {
             component_index = 0;
             currentStack = stack_for_kernel;
             current_dir = kernel;
+            current_items = kernel_items;
         }
         else if(selected.equals("process_management")){
             component_index = 1;
             currentStack = stack_for_process;
              current_dir = process_management;
+             current_items = process_items;
         }
         else if(selected.equals("io_management")){
             component_index = 2;
              currentStack = stack_for_io;
               current_dir = io_management;
+              current_items = io_items;
         }
         else if(selected.equals("file_management")){
             component_index = 3;
              currentStack = stack_for_file;
               current_dir = file_management;
+              current_items = file_items;
         }
         else if(selected.equals("storage_management")){
             component_index = 4;
              currentStack = stack_for_storage;
               current_dir = storage_management;
+              current_items = storage_items;
         }
         else if(selected.equals("memory_management")){
             component_index = 5;
              currentStack = stack_for_memory;
               current_dir = memory_management;
+              current_items = memory_items;
         }
         else if(selected.equals("protection")){
             component_index = 6;
              currentStack = stack_for_protection;
               current_dir = protection;
+              current_items = protection_items;
         }
         else if(selected.equals("interpreter")){
             component_index = 7;
              currentStack = stack_for_interpreter;
               current_dir = interpreter;
+              current_items = interpreter_items;
         }
 
         disabler(currentStack);
