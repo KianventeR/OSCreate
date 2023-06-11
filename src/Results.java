@@ -139,6 +139,7 @@ public class Results extends javax.swing.JPanel {
     }
 
     public void results_saveActionPerformed(java.awt.event.ActionEvent evt) {
+        MainMenu.menu_play.setVisible(true);
         OSCreate.mainMenu.menu_return.setEnabled(false);
         OSCreate.mainMenu.menu_return.setVisible(false);
         OSCreate.mainMenu.menu_help.setEnabled(true);
