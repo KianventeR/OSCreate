@@ -13,7 +13,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     JButton[] buttons;
-    private String selected;
+    public String selected;
     LinkedList<Integer> stack_for_kernel;
     LinkedList<Integer> stack_for_process;
     LinkedList<Integer> stack_for_io;

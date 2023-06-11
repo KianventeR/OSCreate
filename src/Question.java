@@ -2,7 +2,10 @@ import java.awt.Color;
 import java.util.LinkedList;
 
 public class Question extends javax.swing.JPanel {
-    public int points;
+
+    public int points, kernel_points, process_points, io_points, storage_points, memory_points, protection_points,
+            file_points, interpreter_points;
+    public String[] data;
 
     public Question() {
         initComponents();
@@ -13,6 +16,45 @@ public class Question extends javax.swing.JPanel {
         // validate correct answer
         if (selected == correct) {
             points = points + 10;
+
+            switch (MainMenu.gameplay.component_index) {
+
+                case 0:
+                    kernel_points += 10;
+                    break;
+
+                case 1:
+                    process_points += 10;
+                    break;
+
+                case 2:
+                    io_points += 10;
+                    break;
+
+                case 3:
+                    file_points += 10;
+                    break;
+
+                case 4:
+                    storage_points += 10;
+                    break;
+
+                case 5:
+                    memory_points += 10;
+                    break;
+
+                case 6:
+                    protection_points += 10;
+                    break;
+
+                case 7:
+                    interpreter_points += 10;
+                    break;
+
+            }
+            
+            
+
             MainMenu.gameplay.gameplay_points_label.setText(String.valueOf(points));
             OSCreate.mainMenu.results.results_score_label.setText(String.valueOf(points));
             return true;
@@ -22,9 +64,17 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void initComponents() {
+
+        data = new String[8];
+
         correct = 'A';
         set = new LinkedList<>();
         points = 0;
+        int[] point_array = { kernel_points, process_points, io_points, storage_points, memory_points,
+                protection_points, file_points, interpreter_points };
+        for (int i = 0; i < 8; i++) {
+            point_array[i] = 0;
+        }
         question_C_scroll1 = new javax.swing.JScrollPane();
         question_C_label1 = new javax.swing.JTextArea();
         question_A_scroll = new javax.swing.JScrollPane();
@@ -297,6 +347,14 @@ public class Question extends javax.swing.JPanel {
         int max = MainMenu.gameplay.max_count;
 
         if (finished == max) {
+            RankResultsAlgo rewards = new RankResultsAlgo();
+            data = rewards.results_scores(kernel_points, process_points, io_points, file_points, storage_points, memory_points, process_points, interpreter_points);
+            for(int i = 0; i < data.length; i++){
+                System.out.println(data[i]);
+            }
+            OSCreate.mainMenu.results.results_specs.setText(data[0]+"\n"+ data[1]+"\n"+ data[2]+"\n"+ data[3]+"\n"+ data[4]+"\n"+ data[5]+"\n"+ data[6]+"\n"+ data[7]);
+
+
             MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "results");
         } else {
             MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");

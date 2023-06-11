@@ -60,8 +60,8 @@ public class Results extends javax.swing.JPanel {
 
         results_OSname.setFont(new java.awt.Font("Segoe UI", 1, 18));
         results_OSname.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        results_OSname.setText("asdsad");
-        results_OSname.setToolTipText("");
+        results_OSname.setText("");
+        results_OSname.setToolTipText("Name your OS!");
         results_OSname.setBorder(null);
         results_OSname.setOpaque(false);
         add(results_OSname);
