@@ -2,6 +2,8 @@ import java.util.LinkedList;
 
 import javax.swing.JButton;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+
 public class Gameplay extends javax.swing.JPanel {
     public String difficulty_level;
     
@@ -23,9 +25,29 @@ public class Gameplay extends javax.swing.JPanel {
     public int max_count;
     public int component_index;
     private int disabled_components;
+    QuestionDirectory question_directory = new QuestionDirectory();
+    private LinkedList<String> set;
+    private XSSFSheet current_dir;
+    private XSSFSheet kernel;
+    private XSSFSheet process_management;
+    private XSSFSheet io_management;
+    private XSSFSheet file_management;
+    private XSSFSheet storage_management;
+    private XSSFSheet interpreter;
+    private XSSFSheet memory_management;
+    private XSSFSheet protection;
     
 
     private void initComponents() {
+        kernel = question_directory.initiateWB("Kernel");
+        process_management = question_directory.initiateWB("Process_Management");
+        io_management = question_directory.initiateWB("IO_management");
+        file_management = question_directory.initiateWB("File_Management");
+        storage_management = question_directory.initiateWB("Storage_Management");
+        memory_management = question_directory.initiateWB("Memory_Management");
+        protection = question_directory.initiateWB("Protection");
+        interpreter = question_directory.initiateWB("Command_Interpreter");
+        
         disabled_components = 0;
         component_index = 0;
         finished_question_count = 0;
@@ -521,7 +543,9 @@ public class Gameplay extends javax.swing.JPanel {
     private void gameplay_1ActionPerformed(java.awt.event.ActionEvent evt) {
         stack_adder(1);
         return_enabler();
-        
+
+        set = question_directory.test(2, current_dir);
+        System.out.println(set);
         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "question");
     }
 
@@ -681,6 +705,8 @@ public class Gameplay extends javax.swing.JPanel {
   
 
     private void isSelected(String selected) {
+
+        
         
         this.selected = selected;
         selected_component.setText(selected.replace("_", " ").toUpperCase());
@@ -690,34 +716,42 @@ public class Gameplay extends javax.swing.JPanel {
         if(selected.equals("kernel")){
             component_index = 0;
             currentStack = stack_for_kernel;
+            current_dir = kernel;
         }
         else if(selected.equals("process_management")){
             component_index = 1;
             currentStack = stack_for_process;
+             current_dir = process_management;
         }
         else if(selected.equals("io_management")){
             component_index = 2;
              currentStack = stack_for_io;
+              current_dir = io_management;
         }
         else if(selected.equals("file_management")){
             component_index = 3;
              currentStack = stack_for_file;
+              current_dir = file_management;
         }
         else if(selected.equals("storage_management")){
             component_index = 4;
              currentStack = stack_for_storage;
+              current_dir = storage_management;
         }
         else if(selected.equals("memory_management")){
             component_index = 5;
              currentStack = stack_for_memory;
+              current_dir = memory_management;
         }
         else if(selected.equals("protection")){
             component_index = 6;
              currentStack = stack_for_protection;
+              current_dir = protection;
         }
         else if(selected.equals("interpreter")){
             component_index = 7;
              currentStack = stack_for_interpreter;
+              current_dir = interpreter;
         }
 
         disabler(currentStack);

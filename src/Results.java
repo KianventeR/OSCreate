@@ -3,7 +3,7 @@ public class Results extends javax.swing.JPanel {
         initComponents();
     }
 
-    private void initComponents() {
+    public void initComponents() {
 
         results_save = new javax.swing.JButton();
         results_specs = new javax.swing.JTextArea();
@@ -128,15 +128,15 @@ public class Results extends javax.swing.JPanel {
         results_OS_complete.setBounds(870, 90, 260, 100);
     }
 
-    private void results_saveMouseEntered(java.awt.event.MouseEvent evt) {
+    public void results_saveMouseEntered(java.awt.event.MouseEvent evt) {
         results_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/results/save_hover.png")));
     }
 
-    private void results_saveMouseExited(java.awt.event.MouseEvent evt) {
+    public void results_saveMouseExited(java.awt.event.MouseEvent evt) {
         results_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/results/save.png")));
     }
 
-    private void results_saveActionPerformed(java.awt.event.ActionEvent evt) {
+    public void results_saveActionPerformed(java.awt.event.ActionEvent evt) {
         OSCreate.mainMenu.menu_return.setEnabled(false);
         OSCreate.mainMenu.menu_return.setVisible(false);
         OSCreate.mainMenu.menu_help.setEnabled(true);
@@ -151,17 +151,17 @@ public class Results extends javax.swing.JPanel {
 
 
     
-    private javax.swing.JTextPane results_OS_complete;
-    private javax.swing.JLabel results_OS_name;
-    private javax.swing.JTextField results_OSname;
-    private javax.swing.JLabel results_component_labels;
-    private javax.swing.JLabel results_logo;
-    private javax.swing.JLabel results_oscreate;
-    private javax.swing.JButton results_save;
-    private javax.swing.JLabel results_score_bg;
-    private javax.swing.JLabel results_score_label;
-    private javax.swing.JTextPane results_sentence;
-    private javax.swing.JTextArea results_specs;
-    private javax.swing.JLabel results_status;
+    public javax.swing.JTextPane results_OS_complete;
+    public javax.swing.JLabel results_OS_name;
+    public javax.swing.JTextField results_OSname;
+    public javax.swing.JLabel results_component_labels;
+    public javax.swing.JLabel results_logo;
+    public javax.swing.JLabel results_oscreate;
+    public javax.swing.JButton results_save;
+    public javax.swing.JLabel results_score_bg;
+    public javax.swing.JLabel results_score_label;
+    public javax.swing.JTextPane results_sentence;
+    public javax.swing.JTextArea results_specs;
+    public javax.swing.JLabel results_status;
     
 }
