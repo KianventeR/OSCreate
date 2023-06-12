@@ -1092,12 +1092,16 @@ public class Gameplay extends javax.swing.JPanel {
 
     public void timer() {
         final AtomicInteger loopCount;
+        int maxTime;
         if(MainMenu.difficulty.diff_level == 1) {
             loopCount = new AtomicInteger(29);
+            maxTime = 30;
         } else if(MainMenu.difficulty.diff_level == 2) {
             loopCount = new AtomicInteger(19);
+            maxTime = 20;
         } else {
             loopCount = new AtomicInteger(9);
+            maxTime = 10;
         }
 
         int delayMs = 1000; // 1 second
@@ -1115,7 +1119,8 @@ public class Gameplay extends javax.swing.JPanel {
                     OSCreate.mainMenu.menu_return.setEnabled(false);
                     OSCreate.mainMenu.menu_return.setVisible(false);
                     MainMenu.question.whereTO();
-                    MainMenu.question.question_timer_label.setText(loopCount.getAndDecrement() + "s");
+                    System.out.println(loopCount.getAndDecrement());
+                    MainMenu.question.question_timer_label.setText(maxTime + "s");
                 }
             }
         };
