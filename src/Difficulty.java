@@ -130,6 +130,7 @@ public class Difficulty extends javax.swing.JPanel {
         MainMenu.gameplay.max_count = 24;
         System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
 
+        MainMenu.question.question_timer_label.setText("30s");
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
@@ -168,6 +169,7 @@ public class Difficulty extends javax.swing.JPanel {
         MainMenu.gameplay.max_count = 48;
         System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
 
+        MainMenu.question.question_timer_label.setText("20s");
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);
@@ -204,6 +206,8 @@ public class Difficulty extends javax.swing.JPanel {
         disable_play();
         MainMenu.gameplay.max_count = 72;
         System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
+
+        MainMenu.question.question_timer_label.setText("10s");
         MainMenu.gameplay.gameplay_1.setVisible(true);
         MainMenu.gameplay.gameplay_2.setVisible(true);
         MainMenu.gameplay.gameplay_3.setVisible(true);

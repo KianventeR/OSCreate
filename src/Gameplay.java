@@ -1,7 +1,15 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
@@ -587,6 +595,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_1ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(1);
         return_enabler();
     }
@@ -629,6 +638,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_2ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(2);
         return_enabler();
     }
@@ -643,6 +653,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_3ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(3);
         return_enabler();
     }
@@ -657,6 +668,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_4ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(4);
         return_enabler();
     }
@@ -671,6 +683,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_5ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(5);
         return_enabler();
     }
@@ -685,6 +698,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_6ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(6);
         return_enabler();
     }
@@ -699,6 +713,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_7ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(7);
         return_enabler();
     }
@@ -713,6 +728,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_8ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(8);
         return_enabler();
     }
@@ -727,6 +743,7 @@ public class Gameplay extends javax.swing.JPanel {
 
     private void gameplay_9ActionPerformed(java.awt.event.ActionEvent evt) {
         Music.sfx();
+        timer();
         stack_adder(9);
         return_enabler();
     }
@@ -1073,6 +1090,45 @@ public class Gameplay extends javax.swing.JPanel {
         gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter_hover.png")));
     }
 
+    public void timer() {
+        final AtomicInteger loopCount;
+        int maxTime;
+        if(MainMenu.difficulty.diff_level == 1) {
+            loopCount = new AtomicInteger(29);
+            maxTime = 30;
+        } else if(MainMenu.difficulty.diff_level == 2) {
+            loopCount = new AtomicInteger(19);
+            maxTime = 20;
+        } else {
+            loopCount = new AtomicInteger(9);
+            maxTime = 10;
+        }
+
+        int delayMs = 1000; // 1 second
+
+        timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                int iteration = loopCount.getAndDecrement();
+
+                MainMenu.question.question_timer_label.setText(iteration + "s");
+
+                if (iteration < 0) {
+                    timer.cancel();
+                    OSCreate.mainMenu.menu_return.setEnabled(false);
+                    OSCreate.mainMenu.menu_return.setVisible(false);
+                    MainMenu.question.whereTO();
+                    System.out.println(loopCount.getAndDecrement());
+                    MainMenu.question.question_timer_label.setText(maxTime + "s");
+                }
+            }
+        };
+
+        timer.schedule(task, delayMs, delayMs);
+        // MainMenu.question.question_timer_label.setText(i + "s");
+    }
+    
     public javax.swing.JButton gameplay_1;
     public javax.swing.JButton gameplay_2;
     public javax.swing.JButton gameplay_3;
@@ -1098,6 +1154,7 @@ public class Gameplay extends javax.swing.JPanel {
     public javax.swing.JLabel gameplay_questions_border;
     private javax.swing.JLabel gameplay_questions_label;
     private javax.swing.JButton gameplay_storage;
+    public Timer timer;
 
     public void reset() {
         removeAll();
