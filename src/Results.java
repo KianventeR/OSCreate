@@ -178,7 +178,7 @@ public class Results extends javax.swing.JPanel {
                 output.write("\n\n");
             }
             
-            output.write(os_name+" \t\t\t "+rating+"\n");
+            output.write(""+os_name+"\t\t\t\t\t\t"+rating+"\n");
             // done writing , now close the file
             output.close();
 

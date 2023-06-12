@@ -23,7 +23,7 @@ public class OSCreate extends javax.swing.JFrame {
         
         mainFrame.add(mainPanel);
         mainFrame.pack();
-        
+        //Osname                                90^ ,ak
         mainFrame.setVisible(true);
         mainFrame.setLocationRelativeTo(null);
         
