@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class Results extends javax.swing.JPanel {
     public Results() {
         initComponents();
@@ -140,21 +142,34 @@ public class Results extends javax.swing.JPanel {
     }
 
     public void results_saveActionPerformed(java.awt.event.ActionEvent evt) {
-        Music.sfx();
-        MainMenu.menu_play.setVisible(true);
-        OSCreate.mainMenu.menu_return.setEnabled(false);
-        OSCreate.mainMenu.menu_return.setVisible(false);
-        OSCreate.mainMenu.menu_help.setEnabled(true);
-        OSCreate.mainMenu.menu_devs.setEnabled(true);
-        OSCreate.mainMenu.menu_leaderboards.setEnabled(true);
-        OSCreate.mainMenu.menu_help.setVisible(true);
-        OSCreate.mainMenu.menu_devs.setVisible(true);
-        OSCreate.mainMenu.menu_leaderboards.setVisible(true);
-        MainMenu.question.points = 0;
 
-        MainMenu.gameplay.reset();
-        reset();
-        MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "main");
+        try{
+            String os_name = results_OSname.getText();
+            String rating = results_score_label.getText();
+
+            System.out.println(os_name);
+            System.out.println(rating);
+             
+            Music.sfx();
+            MainMenu.menu_play.setVisible(true);
+            OSCreate.mainMenu.menu_return.setEnabled(false);
+            OSCreate.mainMenu.menu_return.setVisible(false);
+            OSCreate.mainMenu.menu_help.setEnabled(true);
+            OSCreate.mainMenu.menu_devs.setEnabled(true);
+            OSCreate.mainMenu.menu_leaderboards.setEnabled(true);
+            OSCreate.mainMenu.menu_help.setVisible(true);
+            OSCreate.mainMenu.menu_devs.setVisible(true);
+            OSCreate.mainMenu.menu_leaderboards.setVisible(true);
+            MainMenu.question.points = 0;
+
+            MainMenu.gameplay.reset();
+            reset();
+            MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "main");
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
     }
 
     private void reset() {
