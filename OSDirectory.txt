@@ -1,5 +1,5 @@
 
 
 
-FenrirOS                        37%
-ShannOS                     62%
+Windows11			70%
+Windows123			90%

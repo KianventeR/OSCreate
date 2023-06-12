@@ -449,11 +449,14 @@ public class MainMenu extends javax.swing.JPanel {
         menu_bg.setBounds(0, 0, 1280, 720);
 
         os_dir.setBounds(jScrollPane1.getBounds());
-
+        os_dir.setEditable(false);
+        
+        os_dir.setOpaque(false);
         os_dir.setFont(new java.awt.Font("Segoe UI", 1, 15));
-        os_dir.setText("MyShittyOS \t\t\t 89%");
+        // os_dir.setText("MyShittyOS \t\t\t 89%");
 
         jScrollPane1.setViewportView(os_dir);
+        jScrollPane1.getViewport().setOpaque(false);
     }
 
     private void exitMouseEntered(java.awt.event.MouseEvent evt) {
