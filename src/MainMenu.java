@@ -670,6 +670,16 @@ public class MainMenu extends javax.swing.JPanel {
         menu_devs.setVisible(true);
         menu_leaderboards.setVisible(true);
 
+        if(MainMenu.question.isVisible()) {
+            MainMenu.gameplay.timer.cancel();
+            if(MainMenu.difficulty.diff_level == 1)
+                MainMenu.question.question_timer_label.setText("30s");
+            else if(MainMenu.difficulty.diff_level == 2)
+                MainMenu.question.question_timer_label.setText("20s");
+            else
+                MainMenu.question.question_timer_label.setText("10s");
+        }
+        
         if(!Music.bgMusic.filePath.toString().equals(Music.bgMusicTemp.filePath.toString())) {
             try {
                 Music.bgMusic.stop();
@@ -718,6 +728,13 @@ public class MainMenu extends javax.swing.JPanel {
         menu_return.setEnabled(false);
         menu_return.setVisible(false);
 
+        MainMenu.gameplay.timer.cancel();
+        if(MainMenu.difficulty.diff_level == 1)
+            MainMenu.question.question_timer_label.setText("30s");
+        else if(MainMenu.difficulty.diff_level == 2)
+            MainMenu.question.question_timer_label.setText("20s");
+        else
+            MainMenu.question.question_timer_label.setText("10s");
         question.whereTO();
     }
 

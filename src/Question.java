@@ -313,7 +313,7 @@ public class Question extends javax.swing.JPanel {
 
         question_timer_label.setFont(new java.awt.Font("Segoe UI", 1, 48));
         question_timer_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        question_timer_label.setText("30s");
+        question_timer_label.setText("");
         question_timer_label.setToolTipText("");
         add(question_timer_label);
         question_timer_label.setBounds(1030, 480, 150, 50);
@@ -380,12 +380,20 @@ public class Question extends javax.swing.JPanel {
             question_A_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
         }
 
+        MainMenu.gameplay.timer.cancel();
         new java.util.Timer().schedule(new java.util.TimerTask() {
             @Override
             public void run() {
                 return_disabler();
                 question_A.setVisible(true);
                 question_A_front.setVisible(false);
+
+                if(MainMenu.difficulty.diff_level == 1)
+                    MainMenu.question.question_timer_label.setText("30s");
+                else if(MainMenu.difficulty.diff_level == 2)
+                    MainMenu.question.question_timer_label.setText("20s");
+                else
+                    MainMenu.question.question_timer_label.setText("10s");
             }
        }, 1000); // Miliseconds
     }
@@ -401,7 +409,6 @@ public class Question extends javax.swing.JPanel {
                 System.out.println(data[i]);
             }
             OSCreate.mainMenu.results.results_specs.setText(data[0]+"\n"+ data[1]+"\n"+ data[2]+"\n"+ data[3]+"\n"+ data[4]+"\n"+ data[5]+"\n"+ data[6]+"\n"+ data[7]);
-
 
             MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "results");
             MainMenu.question.reset();
@@ -445,12 +452,20 @@ public class Question extends javax.swing.JPanel {
             question_B_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
         }
 
+        MainMenu.gameplay.timer.cancel();
         new java.util.Timer().schedule(new java.util.TimerTask() {
             @Override
             public void run() {
                 return_disabler();
                 question_B.setVisible(true);
                 question_B_front.setVisible(false);
+
+                if(MainMenu.difficulty.diff_level == 1)
+                    MainMenu.question.question_timer_label.setText("30s");
+                else if(MainMenu.difficulty.diff_level == 2)
+                    MainMenu.question.question_timer_label.setText("20s");
+                else
+                    MainMenu.question.question_timer_label.setText("10s");
             }
        }, 1000); // Miliseconds
     }
@@ -477,13 +492,21 @@ public class Question extends javax.swing.JPanel {
             question_C_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
         }
 
+        MainMenu.gameplay.timer.cancel();
         new java.util.Timer().schedule(new java.util.TimerTask() {
-           @Override
-           public void run() {
-            return_disabler();
-            question_C.setVisible(true);
-            question_C_front.setVisible(false);
-           }
+            @Override
+            public void run() {
+                return_disabler();
+                question_C.setVisible(true);
+                question_C_front.setVisible(false);
+                
+                if(MainMenu.difficulty.diff_level == 1)
+                    MainMenu.question.question_timer_label.setText("30s");
+                else if(MainMenu.difficulty.diff_level == 2)
+                    MainMenu.question.question_timer_label.setText("20s");
+                else
+                    MainMenu.question.question_timer_label.setText("10s");   
+            }
        }, 1000); // Miliseconds
     }
 
@@ -509,12 +532,20 @@ public class Question extends javax.swing.JPanel {
             question_D_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
         }
 
+        MainMenu.gameplay.timer.cancel();
         new java.util.Timer().schedule(new java.util.TimerTask() {
             @Override
             public void run() {
                 return_disabler();
                 question_D.setVisible(true);
                 question_D_front.setVisible(false);
+
+                if(MainMenu.difficulty.diff_level == 1)
+                    MainMenu.question.question_timer_label.setText("30s");
+                else if(MainMenu.difficulty.diff_level == 2)
+                    MainMenu.question.question_timer_label.setText("20s");
+                else
+                    MainMenu.question.question_timer_label.setText("10s");
             }
        }, 1000); // Miliseconds
     }
@@ -542,7 +573,7 @@ public class Question extends javax.swing.JPanel {
     private javax.swing.JLabel question_qArea;
     private javax.swing.JLabel question_timer_bg;
     private javax.swing.JLabel question_timer_bg_label;
-    private javax.swing.JLabel question_timer_label;
+    public javax.swing.JLabel question_timer_label;
     private LinkedList<String> set;
     private char correct;
 
