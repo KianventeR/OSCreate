@@ -53,8 +53,6 @@ public class Question extends javax.swing.JPanel {
 
             }
             
-            
-
             MainMenu.gameplay.gameplay_points_label.setText(String.valueOf(points));
             OSCreate.mainMenu.results.results_score_label.setText(String.valueOf(points));
             return true;
@@ -80,15 +78,19 @@ public class Question extends javax.swing.JPanel {
         question_A_scroll = new javax.swing.JScrollPane();
         question_A_label = new javax.swing.JTextArea();
         question_A = new javax.swing.JButton();
+        question_A_front = new javax.swing.JButton();
         question_B_scroll = new javax.swing.JScrollPane();
         question_B_label = new javax.swing.JTextArea();
         question_B = new javax.swing.JButton();
+        question_B_front = new javax.swing.JButton();
         question_C_scroll = new javax.swing.JScrollPane();
         question_C_label = new javax.swing.JTextArea();
         question_C = new javax.swing.JButton();
+        question_C_front = new javax.swing.JButton();
         question_D_scroll = new javax.swing.JScrollPane();
         question_D_label = new javax.swing.JTextArea();
         question_D = new javax.swing.JButton();
+        question_D_front = new javax.swing.JButton();
         question_timer_label = new javax.swing.JLabel();
         question_timer_bg_label = new javax.swing.JLabel();
         question_timer_bg = new javax.swing.JLabel();
@@ -110,8 +112,6 @@ public class Question extends javax.swing.JPanel {
         question_C_label1.setFont(new java.awt.Font("Segoe UI", 1, 30));
         question_C_label1.setLineWrap(true);
         question_C_label1.setRows(5);
-        question_C_label1.setText(
-                "Which type of architecture has a kernel that provides basic services and other services provided by separate modules? ");
         question_C_label1.setToolTipText("");
         question_C_label1.setWrapStyleWord(true);
         question_C_scroll1.setViewportView(question_C_label1);
@@ -136,8 +136,7 @@ public class Question extends javax.swing.JPanel {
         question_A_scroll.setBounds(150, 290, 330, 80);
         question_A_scroll.setOpaque(false);
 
-        question_A
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice.png")));
+        question_A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceA.png")));
         question_A.setBorder(null);
         question_A.setBorderPainted(false);
         question_A.setContentAreaFilled(false);
@@ -159,6 +158,15 @@ public class Question extends javax.swing.JPanel {
         add(question_A);
         question_A.setBounds(60, 280, 430, 100);
 
+        question_A_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceA.png")));
+        question_A_front.setVisible(false);
+        question_A_front.setBorder(null);
+        question_A_front.setBorderPainted(false);
+        question_A_front.setContentAreaFilled(false);
+        question_A_front.setFocusPainted(false);
+        add(question_A_front);
+        question_A_front.setBounds(60, 280, 430, 100);
+
         question_B_scroll.setBorder(null);
         question_B_scroll.setOpaque(false);
 
@@ -167,7 +175,6 @@ public class Question extends javax.swing.JPanel {
         question_B_label.setFont(new java.awt.Font("Segoe UI", 1, 14));
         question_B_label.setLineWrap(true);
         question_B_label.setRows(1);
-        question_B_label.setText("aaasdasdsa sada sdsds dsad sd sadsa dsad asd sadsadsads a\na\na\na");
         question_B_label.setWrapStyleWord(true);
         question_B_label.setOpaque(true);
         question_B_label.setBackground(Color.WHITE);
@@ -176,8 +183,7 @@ public class Question extends javax.swing.JPanel {
         add(question_B_scroll);
         question_B_scroll.setBounds(150, 410, 330, 80);
 
-        question_B
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice.png")));
+        question_B.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceB.png")));
         question_B.setBorder(null);
         question_B.setBorderPainted(false);
         question_B.setContentAreaFilled(false);
@@ -199,6 +205,15 @@ public class Question extends javax.swing.JPanel {
         add(question_B);
         question_B.setBounds(60, 400, 430, 100);
 
+        question_B_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceB.png")));
+        question_B_front.setVisible(false);
+        question_B_front.setBorder(null);
+        question_B_front.setBorderPainted(false);
+        question_B_front.setContentAreaFilled(false);
+        question_B_front.setFocusPainted(false);
+        add(question_B_front);
+        question_B_front.setBounds(60, 400, 430, 100);
+
         question_C_scroll.setBorder(null);
         question_C_scroll.setOpaque(false);
 
@@ -216,8 +231,7 @@ public class Question extends javax.swing.JPanel {
         add(question_C_scroll);
         question_C_scroll.setBounds(610, 290, 330, 80);
 
-        question_C
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice.png")));
+        question_C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceC.png")));
         question_C.setBorder(null);
         question_C.setBorderPainted(false);
         question_C.setContentAreaFilled(false);
@@ -239,6 +253,15 @@ public class Question extends javax.swing.JPanel {
         add(question_C);
         question_C.setBounds(520, 280, 430, 100);
 
+        question_C_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceC.png")));
+        question_C_front.setVisible(false);
+        question_C_front.setBorder(null);
+        question_C_front.setBorderPainted(false);
+        question_C_front.setContentAreaFilled(false);
+        question_C_front.setFocusPainted(false);
+        add(question_C_front);
+        question_C_front.setBounds(520, 280, 430, 100);
+
         question_D_scroll.setBorder(null);
         question_D_scroll.setOpaque(false);
 
@@ -256,8 +279,7 @@ public class Question extends javax.swing.JPanel {
         add(question_D_scroll);
         question_D_scroll.setBounds(610, 410, 330, 80);
 
-        question_D
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice.png")));
+        question_D.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceD.png")));
         question_D.setBorder(null);
         question_D.setBorderPainted(false);
         question_D.setContentAreaFilled(false);
@@ -278,6 +300,15 @@ public class Question extends javax.swing.JPanel {
         });
         add(question_D);
         question_D.setBounds(520, 400, 430, 100);
+
+        question_D_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceD.png")));
+        question_D_front.setVisible(false);
+        question_D_front.setBorder(null);
+        question_D_front.setBorderPainted(false);
+        question_D_front.setContentAreaFilled(false);
+        question_D_front.setFocusPainted(false);
+        add(question_D_front);
+        question_D_front.setBounds(520, 400, 430, 100);
 
         question_timer_label.setFont(new java.awt.Font("Segoe UI", 1, 48));
         question_timer_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -327,19 +358,35 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_AMouseEntered(java.awt.event.MouseEvent evt) {
-        System.out.println("EnteredA");
-
+        question_A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_hover.png")));
     }
 
     private void question_AMouseExited(java.awt.event.MouseEvent evt) {
-
+        question_A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceA.png")));
     }
 
     private void question_AActionPerformed(java.awt.event.ActionEvent evt) {
-        return_disabler();
+        Music.sfx();
         char selected = 'A';
-        System.out.println(validator(selected, correct));
 
+        question_A.setVisible(false);
+        question_A_front.setVisible(true);
+        if(validator(selected, correct)) {
+            Music.correct();
+            question_A_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_check.png")));
+        } else {
+            Music.wrong();
+            question_A_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
+        }
+
+        new java.util.Timer().schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                return_disabler();
+                question_A.setVisible(true);
+                question_A_front.setVisible(false);
+            }
+       }, 1000); // Miliseconds
     }
 
     public void whereTO() {
@@ -369,63 +416,117 @@ public class Question extends javax.swing.JPanel {
     }
 
     private void question_BMouseEntered(java.awt.event.MouseEvent evt) {
-        System.out.println("EnteredB");
-
+        question_B.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_hover.png")));
     }
 
     private void question_BMouseExited(java.awt.event.MouseEvent evt) {
-
+        question_B.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceB.png")));
     }
 
     private void question_BActionPerformed(java.awt.event.ActionEvent evt) {
-        return_disabler();
+        Music.sfx();
         char selected = 'B';
-        System.out.println(validator(selected, correct));
+        
+        question_B.setVisible(false);
+        question_B_front.setVisible(true);
+        if(validator(selected, correct)) {
+            Music.correct();
+            question_B_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_check.png")));
+        } else {
+            Music.wrong();
+            question_B_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
+        }
 
+        new java.util.Timer().schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                return_disabler();
+                question_B.setVisible(true);
+                question_B_front.setVisible(false);
+            }
+       }, 1000); // Miliseconds
     }
 
     private void question_CMouseEntered(java.awt.event.MouseEvent evt) {
-        System.out.println("EnteredC");
+        question_C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_hover.png")));
     }
 
     private void question_CMouseExited(java.awt.event.MouseEvent evt) {
-
+        question_C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceC.png")));
     }
 
     private void question_CActionPerformed(java.awt.event.ActionEvent evt) {
-        return_disabler();
+        Music.sfx();
         char selected = 'C';
-        System.out.println(validator(selected, correct));
+        
+        question_C.setVisible(false);
+        question_C_front.setVisible(true);
+        if(validator(selected, correct)) {
+            Music.correct();
+            question_C_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_check.png")));
+        } else {
+            Music.wrong();
+            question_C_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
+        }
 
+        new java.util.Timer().schedule(new java.util.TimerTask() {
+           @Override
+           public void run() {
+            return_disabler();
+            question_C.setVisible(true);
+            question_C_front.setVisible(false);
+           }
+       }, 1000); // Miliseconds
     }
 
     private void question_DMouseEntered(java.awt.event.MouseEvent evt) {
-        System.out.println("EnteredD");
+        question_D.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_hover.png")));
     }
 
     private void question_DMouseExited(java.awt.event.MouseEvent evt) {
-
+        question_D.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choiceD.png")));
     }
 
     private void question_DActionPerformed(java.awt.event.ActionEvent evt) {
-        return_disabler();
+        Music.sfx();
         char selected = 'D';
-        System.out.println(validator(selected, correct));
+        
+        question_D.setVisible(false);
+        question_D_front.setVisible(true);
+        if(validator(selected, correct)) {
+            Music.correct();
+            question_D_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_check.png")));
+        } else {
+            Music.wrong();
+            question_D_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/question/question_choice_wrong.png")));
+        }
 
+        new java.util.Timer().schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                return_disabler();
+                question_D.setVisible(true);
+                question_D_front.setVisible(false);
+            }
+       }, 1000); // Miliseconds
     }
 
     private javax.swing.JButton question_A;
+    private javax.swing.JButton question_A_front;
     private javax.swing.JTextArea question_A_label;
     private javax.swing.JScrollPane question_A_scroll;
     private javax.swing.JButton question_B;
+    private javax.swing.JButton question_B_front;
     private javax.swing.JTextArea question_B_label;
     private javax.swing.JScrollPane question_B_scroll;
     private javax.swing.JButton question_C;
+    private javax.swing.JButton question_C_front;
     private javax.swing.JTextArea question_C_label;
     private javax.swing.JTextArea question_C_label1;
     private javax.swing.JScrollPane question_C_scroll;
     private javax.swing.JScrollPane question_C_scroll1;
     private javax.swing.JButton question_D;
+    private javax.swing.JButton question_D_front;
     private javax.swing.JTextArea question_D_label;
     private javax.swing.JScrollPane question_D_scroll;
     private javax.swing.JLabel question_bg;

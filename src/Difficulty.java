@@ -123,6 +123,7 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_easyActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         disable_play();
         MainMenu.gameplay.max_count = 24;
         System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
@@ -138,6 +139,14 @@ public class Difficulty extends javax.swing.JPanel {
         MainMenu.gameplay.gameplay_9.setVisible(false);
         MainMenu.gameplay.gameplay_questions_border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/questions_easy_border.png")));
         
+        try {
+            Music.bgMusic.stop();
+            Music.bgMusic = new MusicPlayer("/resources/sounds/gameplay_music.wav");
+            Music.bgMusic.pause();
+            if(OSCreate.sound)
+                Music.bgMusic.play();
+        } catch (Exception e) { }
+
         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
     }
 
@@ -150,6 +159,7 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_mediumActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         disable_play();
 
         MainMenu.gameplay.max_count = 48;
@@ -166,6 +176,14 @@ public class Difficulty extends javax.swing.JPanel {
         MainMenu.gameplay.gameplay_9.setVisible(false);
         MainMenu.gameplay.gameplay_questions_border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/questions_medium_border.png")));
         
+        try {
+            Music.bgMusic.stop();
+            Music.bgMusic = new MusicPlayer("/resources/sounds/gameplay_music.wav");
+            Music.bgMusic.pause();
+            if(OSCreate.sound)
+                Music.bgMusic.play();
+        } catch (Exception e) { }
+        
         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
     }
 
@@ -178,6 +196,7 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_hardActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         disable_play();
         MainMenu.gameplay.max_count = 72;
         System.out.println("Questions to answer: " + MainMenu.gameplay.max_count);
@@ -192,6 +211,14 @@ public class Difficulty extends javax.swing.JPanel {
         MainMenu.gameplay.gameplay_9.setVisible(true);
         MainMenu.gameplay.gameplay_questions_border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/questions_hard_border.png")));
 
+        try {
+            Music.bgMusic.stop();
+            Music.bgMusic = new MusicPlayer("/resources/sounds/gameplay_music.wav");
+            Music.bgMusic.pause();
+            if(OSCreate.sound)
+                Music.bgMusic.play();
+        } catch (Exception e) { }
+        
         MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
     }
 

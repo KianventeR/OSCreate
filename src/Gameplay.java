@@ -85,7 +85,6 @@ public class Gameplay extends javax.swing.JPanel {
         current_items = new LinkedList<>();
 
         selected = "";
-        selected_component = new javax.swing.JLabel();
         gameplay_1 = new javax.swing.JButton();
         gameplay_2 = new javax.swing.JButton();
         gameplay_3 = new javax.swing.JButton();
@@ -117,7 +116,6 @@ public class Gameplay extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1210, 580));
         setLayout(null);
 
-        add(selected_component);
         gameplay_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/1.png")));
         gameplay_1.setBorder(null);
         gameplay_1.setBorderPainted(false);
@@ -575,11 +573,6 @@ public class Gameplay extends javax.swing.JPanel {
         add(gameplay_points_bg);
         gameplay_points_bg.setBounds(760, 70, 150, 130);
 
-        selected_component.setFont(new java.awt.Font("Segoe UI", 1, 20));
-        selected_component.setForeground(new java.awt.Color(255, 255, 255));
-        selected_component.setText("SELECT A COMPONENT");
-        selected_component.setBounds(710, 510, 300, 60);
-
         buttons = new JButton[] { gameplay_1, gameplay_2, gameplay_3, gameplay_4, gameplay_5, gameplay_6, gameplay_7,
                 gameplay_8, gameplay_9 };
     }
@@ -593,6 +586,7 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_1ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(1);
         return_enabler();
     }
@@ -600,11 +594,9 @@ public class Gameplay extends javax.swing.JPanel {
     private int randomizer() {
         Random rand = new Random();
         return rand.nextInt((15 - 2) + 2);
-
     }
 
     private void return_enabler() {
-
         int num = randomizer();
 
         while (true) {
@@ -636,9 +628,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_2ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(2);
         return_enabler();
-
     }
 
     private void gameplay_3MouseEntered(java.awt.event.MouseEvent evt) {
@@ -650,9 +642,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_3ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(3);
         return_enabler();
-
     }
 
     private void gameplay_4MouseEntered(java.awt.event.MouseEvent evt) {
@@ -664,9 +656,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_4ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(4);
         return_enabler();
-
     }
 
     private void gameplay_5MouseEntered(java.awt.event.MouseEvent evt) {
@@ -678,9 +670,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_5ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(5);
         return_enabler();
-
     }
 
     private void gameplay_6MouseEntered(java.awt.event.MouseEvent evt) {
@@ -692,9 +684,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_6ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(6);
         return_enabler();
-
     }
 
     private void gameplay_7MouseEntered(java.awt.event.MouseEvent evt) {
@@ -706,9 +698,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_7ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(7);
         return_enabler();
-
     }
 
     private void gameplay_8MouseEntered(java.awt.event.MouseEvent evt) {
@@ -720,9 +712,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_8ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(8);
         return_enabler();
-
     }
 
     private void gameplay_9MouseEntered(java.awt.event.MouseEvent evt) {
@@ -734,9 +726,9 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_9ActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         stack_adder(9);
         return_enabler();
-
     }
 
     private void gameplay_kernelMouseEntered(java.awt.event.MouseEvent evt) {
@@ -745,18 +737,25 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_kernelMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_kernel
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        if(selected != "kernel")
+            gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
     }
 
     private void gameplay_kernelActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("kernel");
-        // System.out.println(currentStack);
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel_hover.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void enable_all_buttons(JButton[] buttons) {
@@ -768,7 +767,6 @@ public class Gameplay extends javax.swing.JPanel {
     private void isSelected(String selected) {
 
         this.selected = selected;
-        selected_component.setText(selected.replace("_", " ").toUpperCase());
         System.out.println(this.selected);
 
         if (selected.equals("kernel")) {
@@ -878,7 +876,6 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void change_integrity(int disabled_components) {
-
         for (int i = 1; i < disabled_components + 1; i++) {
             gameplay_integrity_status.setIcon(
                     new javax.swing.ImageIcon(getClass().getResource("/resources/results/status_0" + i + ".png")));
@@ -899,128 +896,181 @@ public class Gameplay extends javax.swing.JPanel {
     }
 
     private void gameplay_process_mgtMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_process_mgt.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        if(selected != "process_management")
+            gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
     }
 
     private void gameplay_process_mgtActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("process_management");
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process_hover.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_io_mgtMouseEntered(java.awt.event.MouseEvent evt) {
-        gameplay_io_mgt.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io_hover.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io_hover.png")));
     }
 
     private void gameplay_io_mgtMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_io_mgt
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        if(selected != "io_management")
+            gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
     }
 
     private void gameplay_io_mgtActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("io_management");
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io_hover.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_protectionMouseEntered(java.awt.event.MouseEvent evt) {
-        gameplay_protection.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/resources/gameplay/component_protection_hover.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection_hover.png")));
     }
 
     private void gameplay_protectionMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_protection.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        if(selected != "protection")
+            gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
     }
 
     private void gameplay_protectionActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("protection");
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection_hover.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_fileMouseEntered(java.awt.event.MouseEvent evt) {
-        gameplay_file.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file_hover.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file_hover.png")));
     }
 
     private void gameplay_fileMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_file
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        if(selected != "file_management")
+            gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
     }
 
     private void gameplay_fileActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("file_management");
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file_hover.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_storageMouseEntered(java.awt.event.MouseEvent evt) {
-        gameplay_storage.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage_hover.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage_hover.png")));
     }
 
     private void gameplay_storageMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_storage.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        if(selected != "storage_management")
+            gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
     }
 
     private void gameplay_storageActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("storage_management");
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage_hover.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_memoryMouseEntered(java.awt.event.MouseEvent evt) {
-        gameplay_memory.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory_hover.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory_hover.png")));
     }
 
     private void gameplay_memoryMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_memory
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        if(selected != "memory_management")
+            gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
     }
 
     private void gameplay_memoryActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("memory_management");
-
+        
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory_hover.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_interpreterMouseEntered(java.awt.event.MouseEvent evt) {
-        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/resources/gameplay/component_interpreter_hover.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter_hover.png")));
     }
 
     private void gameplay_interpreterMouseExited(java.awt.event.MouseEvent evt) {
-        gameplay_interpreter.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
+        if(selected != "interpreter")
+            gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter.png")));
     }
 
     private void gameplay_interpreterActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Music.sfx();
         if (selected.equals("")) {
             enable_all_buttons(buttons);
         }
         isSelected("interpreter");
 
+        gameplay_kernel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_kernel.png")));
+        gameplay_process_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_process.png")));
+        gameplay_io_mgt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_io.png")));
+        gameplay_protection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_protection.png")));
+        gameplay_file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_file.png")));
+        gameplay_storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_storage.png")));
+        gameplay_memory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_memory.png")));
+        gameplay_interpreter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/gameplay/component_interpreter_hover.png")));
     }
 
     public javax.swing.JButton gameplay_1;
@@ -1048,7 +1098,6 @@ public class Gameplay extends javax.swing.JPanel {
     public javax.swing.JLabel gameplay_questions_border;
     private javax.swing.JLabel gameplay_questions_label;
     private javax.swing.JButton gameplay_storage;
-    public javax.swing.JLabel selected_component;
 
     public void reset() {
         removeAll();

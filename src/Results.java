@@ -1,12 +1,9 @@
-import java.util.LinkedList;
-
 public class Results extends javax.swing.JPanel {
     public Results() {
         initComponents();
     }
 
     public void initComponents() {
-
         results_save = new javax.swing.JButton();
         results_specs = new javax.swing.JTextArea();
         results_OSname = new javax.swing.JTextField();
@@ -19,7 +16,7 @@ public class Results extends javax.swing.JPanel {
         results_logo = new javax.swing.JLabel();
         results_sentence = new javax.swing.JTextPane();
         results_OS_complete = new javax.swing.JTextPane();
-        //test
+        
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(1210, 580));
         setLayout(null);
@@ -143,6 +140,7 @@ public class Results extends javax.swing.JPanel {
     }
 
     public void results_saveActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         MainMenu.menu_play.setVisible(true);
         OSCreate.mainMenu.menu_return.setEnabled(false);
         OSCreate.mainMenu.menu_return.setVisible(false);

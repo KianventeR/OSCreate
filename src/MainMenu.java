@@ -36,7 +36,7 @@ public class MainMenu extends javax.swing.JPanel {
         main_cardPanel.add(gameplay, "gameplay");
         main_cardPanel.add(question, "question");
         main_cardPanel.add(results, "results");
-        card.show(main_cardPanel, "main");
+        card.show(main_cardPanel, "results");
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -452,6 +452,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         System.exit(0);
     }
 
@@ -464,6 +465,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void minimizeActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         OSCreate.mainFrame.setState(java.awt.Frame.ICONIFIED);
     }
 
@@ -478,6 +480,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_helpActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         home = false;
         play = false;
         help = true;
@@ -509,6 +512,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_playActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         home = false;
         play = true;
         help = false;
@@ -540,6 +544,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_devsActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         home = false;
         play = false;
         help = false;
@@ -573,6 +578,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_leaderboardsActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         home = false;
         play = false;
         help = false;
@@ -611,11 +617,14 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_volActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         if (OSCreate.sound) {
             OSCreate.sound = false;
+            Music.bgMusic.pause();
             menu_vol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/muteX.png")));
         } else {
             OSCreate.sound = true;
+            Music.bgMusic.play();
             menu_vol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/mute.png")));
         }
     }
@@ -631,6 +640,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_homeActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         home = true;
         play = false;
         help = false;
@@ -659,6 +669,17 @@ public class MainMenu extends javax.swing.JPanel {
         menu_devs.setVisible(true);
         menu_leaderboards.setVisible(true);
 
+        if(Music.bgMusic != Music.bgMusicTemp) {
+            try {
+                Music.bgMusic.stop();
+                Music.bgMusic = new MusicPlayer("/resources/sounds/bg_music.wav");
+                Music.bgMusic.pause();
+                if(OSCreate.sound)
+                    Music.bgMusic.play();
+            } catch (Exception e) { }
+        }
+        
+
         card.show(main_cardPanel, "main");
         card.show(menu_panel, "home");
     }
@@ -672,6 +693,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_play_buttonActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         menu_help.setEnabled(false);
         menu_devs.setEnabled(false);
         menu_leaderboards.setEnabled(false);
@@ -691,6 +713,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_returnActionPerformed(java.awt.event.ActionEvent evt) {
+        Music.sfx();
         menu_return.setEnabled(false);
         menu_return.setVisible(false);
 

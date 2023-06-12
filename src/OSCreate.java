@@ -27,15 +27,15 @@ public class OSCreate extends javax.swing.JFrame {
         mainFrame.setVisible(true);
         mainFrame.setLocationRelativeTo(null);
         
-        card.show(mainPanel, "2");
-//        Music.bgMusic();
+        card.show(mainPanel, "1");
+        Music.bgMusic();
         
-    //    new java.util.Timer().schedule(new java.util.TimerTask() {
-    //        @Override
-    //        public void run() {
-    //            card.show(mainPanel, "2");
-    //        }
-    //    }, 4 * 1200); // Miliseconds
+       new java.util.Timer().schedule(new java.util.TimerTask() {
+           @Override
+           public void run() {
+               card.show(mainPanel, "2");
+           }
+       }, 4 * 1000); // Miliseconds
     }
 
     public static void main(String[] args) {
