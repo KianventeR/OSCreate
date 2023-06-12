@@ -7,7 +7,7 @@ public class Music {
         try {
             bgMusic = new MusicPlayer("/resources/sounds/bg_music.wav");
             bgMusicTemp = new MusicPlayer("/resources/sounds/bg_music.wav");
-            bgMusicTemp.stop();
+            bgMusicTemp.pause();
             bgMusic.play();
         } catch (Exception e) {
             e.printStackTrace();

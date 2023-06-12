@@ -24,6 +24,7 @@ public class MusicPlayer {
 
     public void play() {
         clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
         status = "play";
     }
 

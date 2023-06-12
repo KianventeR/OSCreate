@@ -669,7 +669,7 @@ public class MainMenu extends javax.swing.JPanel {
         menu_devs.setVisible(true);
         menu_leaderboards.setVisible(true);
 
-        if(Music.bgMusic != Music.bgMusicTemp) {
+        if(!Music.bgMusic.filePath.toString().equals(Music.bgMusicTemp.filePath.toString())) {
             try {
                 Music.bgMusic.stop();
                 Music.bgMusic = new MusicPlayer("/resources/sounds/bg_music.wav");
