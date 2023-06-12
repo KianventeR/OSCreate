@@ -1,3 +1,12 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.file.StandardOpenOption;
+
 import javax.swing.JOptionPane;
 
 public class Results extends javax.swing.JPanel {
@@ -146,6 +155,24 @@ public class Results extends javax.swing.JPanel {
         try{
             String os_name = results_OSname.getText();
             String rating = results_score_label.getText();
+
+            
+            File file = new File("OSDirectory.txt");
+
+            // create new file if file does not exist
+            Boolean toAppend = true;
+            if(!file.exists()){
+                file.createNewFile();
+                toAppend = false;
+            }
+
+            // this already creates a file if file does not exist
+            Writer output = new BufferedWriter(new FileWriter(file,toAppend));
+            output.write(os_name+","+rating+"\n");
+            // done writing , now close the file
+            output.close();
+
+            System.out.println("Data successfully added!");
 
             System.out.println(os_name);
             System.out.println(rating);
