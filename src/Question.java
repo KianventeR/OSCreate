@@ -6,6 +6,7 @@ public class Question extends javax.swing.JPanel {
     public int points, kernel_points, process_points, io_points, storage_points, memory_points, protection_points,
             file_points, interpreter_points;
     public String[] data;
+    private int [] point_array;
 
     public Question() {
         initComponents();
@@ -68,7 +69,7 @@ public class Question extends javax.swing.JPanel {
         correct = 'A';
         set = new LinkedList<>();
         points = 0;
-        int[] point_array = { kernel_points, process_points, io_points, storage_points, memory_points,
+        point_array = new int[]{ kernel_points, process_points, io_points, storage_points, memory_points,
                 protection_points, file_points, interpreter_points };
         for (int i = 0; i < 8; i++) {
             point_array[i] = 0;
@@ -403,10 +404,17 @@ public class Question extends javax.swing.JPanel {
 
 
             MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "results");
+            MainMenu.question.reset();
         } else {
             MainMenu.card.show(OSCreate.mainMenu.main_cardPanel, "gameplay");
         }
 
+    }
+
+    private void reset() {
+        for (int i = 0; i < 8; i++) {
+            point_array[i] = 0;
+        }
     }
 
     private void return_disabler() {

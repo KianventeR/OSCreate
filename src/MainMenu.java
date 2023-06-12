@@ -640,6 +640,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_homeActionPerformed(java.awt.event.ActionEvent evt) {
+        question.points = 0;
         Music.sfx();
         home = true;
         play = false;

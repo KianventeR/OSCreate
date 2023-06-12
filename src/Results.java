@@ -64,7 +64,7 @@ public class Results extends javax.swing.JPanel {
         add(results_OSname);
         results_OSname.setBounds(890, 260, 250, 30);
 
-        results_score_label.setFont(new java.awt.Font("Segoe UI", 1, 120));
+        results_score_label.setFont(new java.awt.Font("Segoe UI", 1, 100));
         results_score_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         results_score_label.setText("0");
         results_score_label.setToolTipText("");

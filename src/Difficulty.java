@@ -2,6 +2,7 @@ public class Difficulty extends javax.swing.JPanel {
     public Difficulty() {
         initComponents();
     }
+    public int diff_level;
 
     private void initComponents() {
         difficulty_easy = new javax.swing.JButton();
@@ -123,6 +124,7 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_easyActionPerformed(java.awt.event.ActionEvent evt) {
+        diff_level = 1;
         Music.sfx();
         disable_play();
         MainMenu.gameplay.max_count = 24;
@@ -159,6 +161,7 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_mediumActionPerformed(java.awt.event.ActionEvent evt) {
+        diff_level = 2;
         Music.sfx();
         disable_play();
 
@@ -196,6 +199,7 @@ public class Difficulty extends javax.swing.JPanel {
     }
 
     private void difficulty_hardActionPerformed(java.awt.event.ActionEvent evt) {
+        diff_level = 3;
         Music.sfx();
         disable_play();
         MainMenu.gameplay.max_count = 72;

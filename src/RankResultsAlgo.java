@@ -1,24 +1,62 @@
 class RankResultsAlgo {
     String reward = "";
-    private int total_score = 0;
+    private int total_score;
 
     public String[] results_scores(int kernel, int process_management, int io_management, int file_managment, int storage_management, int memory_management, int protection, int command_interpreter) {
 
         String kernel_reward, pm_reward, io_reward, fm_reward, sm_reward, mem_reward, protection_reward, command_reward;
-        int total_score = kernel + process_management + io_management + file_managment + storage_management + memory_management + protection + command_interpreter;
+        // int total_score = kernel + process_management + io_management + file_managment + storage_management + memory_management + protection + command_interpreter;
         //kernel processing
-        kernel_reward = processKernel(kernel);
-        pm_reward = processPM(process_management);  
-        io_reward = processIO(io_management);
-        fm_reward = processFM(file_managment);
-        sm_reward = processSM(storage_management);
-        mem_reward = processMEM(memory_management);
-        protection_reward = processPR(protection);
-        command_reward = processCI(command_interpreter);
-        
+        int indiv_score = 0;
+         switch(MainMenu.difficulty.diff_level){
+
+            case 1:
+            indiv_score = 30;
+            break;
+
+            case 2:
+            indiv_score = 60;
+            break;
+
+            case 3:
+            indiv_score = 90;
+            break;
+        }
+        double max_score = MainMenu.difficulty.diff_level;
+        kernel_reward = processKernel((kernel/indiv_score)*100);
+        pm_reward = processPM((process_management / indiv_score) * 100);  
+        io_reward = processIO((io_management/indiv_score)*100);
+        fm_reward = processFM((file_managment/indiv_score)*100);
+        sm_reward = processSM((storage_management/indiv_score)*100);
+        mem_reward = processMEM((memory_management/indiv_score)*100);
+        protection_reward = processPR((protection/indiv_score)*100);
+        command_reward = processCI((command_interpreter/indiv_score)*100);
+        System.out.println("diff level" + MainMenu.difficulty.diff_level);
         String [] data = {kernel_reward, pm_reward, io_reward, fm_reward, sm_reward, mem_reward, protection_reward, command_reward};
-        setTotalScore(total_score);
+        total_score = MainMenu.question.points;
+        setTotalScore(MainMenu.question.points);
+
+
+        switch(MainMenu.difficulty.diff_level){
+
+            case 1:
+            max_score = 240.0;
+            break;
+
+            case 2:
+            max_score = 480.0;
+            break;
+
+            case 3:
+            max_score = 720.0;
+            break;
+        }
+        System.out.println("Total: " + total_score);
+        double rating = ((double) (getTotalScore() / max_score) * 100) ;
+        System.out.println((int)rating);
+        OSCreate.mainMenu.results.results_score_label.setText(String.valueOf((int)rating)+"%");
         return data;
+
         
         // System.out.println("You Got " + "\n" + 
         // "Kernel: " + kernel_reward + "\n" +
@@ -41,22 +79,7 @@ class RankResultsAlgo {
         return this.total_score;
     }
 
-    public String osQuality (int score) {
-
-        String quality = "";
-
-        if(score >= 0 && score < 25){
-            
-        }
-        else if(score >= 25 && score < 50){
-            
-        }
-        else if(score >= 25 && score < 50){
-            
-        }
-        return quality;
-    }
-
+  
 
     //kernel
     private String processKernel(int score) {
