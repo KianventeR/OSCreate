@@ -1,8 +1,11 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.Reader;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.file.StandardOpenOption;
@@ -168,7 +171,14 @@ public class Results extends javax.swing.JPanel {
 
             // this already creates a file if file does not exist
             Writer output = new BufferedWriter(new FileWriter(file,toAppend));
-            output.write(os_name+","+rating+"\n");
+            BufferedReader input = new BufferedReader(new FileReader(file));
+
+            // two tabs 
+            if(input.readLine() == null){
+                output.write("\n\n");
+            }
+            
+            output.write(os_name+" \t\t\t "+rating+"\n");
             // done writing , now close the file
             output.close();
 

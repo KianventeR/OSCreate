@@ -1,7 +1,12 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class MainMenu extends javax.swing.JPanel {
     boolean home = true;
@@ -50,6 +55,7 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void initComponents() {
+        os_dir = new javax.swing.JTextArea();
         exit = new javax.swing.JButton();
         minimize = new javax.swing.JButton();
         main_cardPanel = new javax.swing.JPanel();
@@ -441,6 +447,13 @@ public class MainMenu extends javax.swing.JPanel {
         menu_bg.setOpaque(true);
         add(menu_bg);
         menu_bg.setBounds(0, 0, 1280, 720);
+
+        os_dir.setBounds(jScrollPane1.getBounds());
+
+        os_dir.setFont(new java.awt.Font("Segoe UI", 1, 15));
+        os_dir.setText("MyShittyOS \t\t\t 89%");
+
+        jScrollPane1.setViewportView(os_dir);
     }
 
     private void exitMouseEntered(java.awt.event.MouseEvent evt) {
@@ -578,26 +591,48 @@ public class MainMenu extends javax.swing.JPanel {
     }
 
     private void menu_leaderboardsActionPerformed(java.awt.event.ActionEvent evt) {
-        Music.sfx();
-        home = false;
-        play = false;
-        help = false;
-        devs = false;
-        lead = true;
+       
+        try {
+            File file = new File("OSDirectory.txt");
+            BufferedReader input = new BufferedReader(new FileReader(file), ABORT);
+            
+            // create empty file if file does not exist
+            if(!file.exists()){
+                file.createNewFile();
+            }
 
-        menu_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/home.png")));
-        menu_play.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/play.png")));
-        menu_help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/help.png")));
-        menu_devs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/devs.png")));
+            String line = input.lines().map(s->s+"\n").collect(Collectors.joining());
+            input.close();
+        
+          
+            // merge all lines into one long ass multiple line st
+            Music.sfx();
+            home = false;
+            play = false;
+            help = false;
+            devs = false;
+            lead = true;
+            //HAHAH i learn everyday
+            // you have to compose those lines into this "name \t\t\t\ rating" format
+            // oof
+            os_dir.setText(line); // shann diddi pag print 
+            menu_home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/home.png")));
+            menu_play.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/play.png")));
+            menu_help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/help.png")));
+            menu_devs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/devs.png")));
         menu_leaderboards.setIcon(
                 new javax.swing.ImageIcon(getClass().getResource("/resources/main menu/leaderboards_hover.png")));
 
         menu_panel_logo.setIcon(
                 new javax.swing.ImageIcon(getClass().getResource("/resources/leaderboard/leaderboard_logo.png")));
-        menu_panel_label.setText("Leaders");
+        menu_panel_label.setText("Index");
 
         card.show(main_cardPanel, "main");
         card.show(menu_panel, "lead");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }
 
     private void menu_volMouseEntered(java.awt.event.MouseEvent evt) {
@@ -670,26 +705,26 @@ public class MainMenu extends javax.swing.JPanel {
         menu_devs.setVisible(true);
         menu_leaderboards.setVisible(true);
 
-        if(MainMenu.question.isVisible()) {
+        if (MainMenu.question.isVisible()) {
             MainMenu.gameplay.timer.cancel();
-            if(MainMenu.difficulty.diff_level == 1)
+            if (MainMenu.difficulty.diff_level == 1)
                 MainMenu.question.question_timer_label.setText("30s");
-            else if(MainMenu.difficulty.diff_level == 2)
+            else if (MainMenu.difficulty.diff_level == 2)
                 MainMenu.question.question_timer_label.setText("20s");
             else
                 MainMenu.question.question_timer_label.setText("10s");
         }
-        
-        if(!Music.bgMusic.filePath.toString().equals(Music.bgMusicTemp.filePath.toString())) {
+
+        if (!Music.bgMusic.filePath.toString().equals(Music.bgMusicTemp.filePath.toString())) {
             try {
                 Music.bgMusic.stop();
                 Music.bgMusic = new MusicPlayer("/resources/sounds/bg_music.wav");
                 Music.bgMusic.pause();
-                if(OSCreate.sound)
+                if (OSCreate.sound)
                     Music.bgMusic.play();
-            } catch (Exception e) { }
+            } catch (Exception e) {
+            }
         }
-        
 
         card.show(main_cardPanel, "main");
         card.show(menu_panel, "home");
@@ -729,9 +764,9 @@ public class MainMenu extends javax.swing.JPanel {
         menu_return.setVisible(false);
 
         MainMenu.gameplay.timer.cancel();
-        if(MainMenu.difficulty.diff_level == 1)
+        if (MainMenu.difficulty.diff_level == 1)
             MainMenu.question.question_timer_label.setText("30s");
-        else if(MainMenu.difficulty.diff_level == 2)
+        else if (MainMenu.difficulty.diff_level == 2)
             MainMenu.question.question_timer_label.setText("20s");
         else
             MainMenu.question.question_timer_label.setText("10s");
@@ -769,5 +804,6 @@ public class MainMenu extends javax.swing.JPanel {
     private javax.swing.JButton minimize;
     private javax.swing.JLabel play_bg;
     private javax.swing.JPanel play_panel;
+    private javax.swing.JTextArea os_dir;
 
 }
