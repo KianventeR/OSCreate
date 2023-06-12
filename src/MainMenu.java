@@ -36,7 +36,7 @@ public class MainMenu extends javax.swing.JPanel {
         main_cardPanel.add(gameplay, "gameplay");
         main_cardPanel.add(question, "question");
         main_cardPanel.add(results, "results");
-        card.show(main_cardPanel, "results");
+        card.show(main_cardPanel, "main");
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
